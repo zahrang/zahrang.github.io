@@ -3,188 +3,782 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zahra Goraya Portfolio</title>
+  <title>Zahra Goraya | Finance Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
+    :root {
+      --deep-space: #406768;
+      --phthalo-green: #19350C;
+      --moonstone: #6FA9BB;
+      --mustard-green: #687D31;
+      --light-gray: #D5D3CC;
+      --white: #FFFFFF;
+      --dark-accent: #2C4A4A;
+      --sidebar-width: 300px;
+    }
+    
+    * {
       margin: 0;
       padding: 0;
-      background-color: #D5D3CC; /* Light Gray */
-      color: #406768; /* Deep Space Sparkle */
-      scroll-behavior: smooth;
+      box-sizing: border-box;
     }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: var(--light-gray);
+      color: var(--deep-space);
+      display: grid;
+      grid-template-columns: var(--sidebar-width) 1fr;
+      grid-template-rows: 80px 1fr;
+      grid-template-areas: 
+        "sidebar header"
+        "sidebar main";
+      min-height: 100vh;
+    }
+
+    /* Header/Navigation */
     header {
-      background-color: #19350C; /* Phthalo Green */
-      color: #D5D3CC; /* Light Gray */
-      padding: 25px 0;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-    header p {
-      font-size: 1.2em;
-      color: #6FA9BB; /* Moonstone Blue */
-      margin-top: 5px;
-    }
-
-    /* Sticky Navbar */
-    nav {
-      position: sticky;
-      top: 0;
-      background-color: #406768; /* Deep Space Sparkle */
+      grid-area: header;
+      background: var(--white);
       display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 10px 0;
-      z-index: 100;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0 40px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 10;
     }
-    nav a {
-      color: #D5D3CC; /* Light Gray */
+    
+    .nav-menu {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .nav-menu a {
+      color: var(--deep-space);
       text-decoration: none;
-      font-weight: bold;
-      padding: 5px 10px;
-      transition: background-color 0.2s, color 0.2s;
+      font-weight: 600;
+      padding: 10px 20px;
       border-radius: 5px;
+      transition: all 0.3s ease;
     }
-    nav a:hover {
-      background-color: #6FA9BB; /* Moonstone Blue */
-      color: #19350C; /* Phthalo Green */
+    
+    .nav-menu a:hover, .nav-menu a.active {
+      background-color: var(--moonstone);
+      color: var(--white);
     }
 
-    main {
-      padding: 30px 20px;
-      max-width: 900px;
-      margin: auto;
+    /* Sidebar */
+    .sidebar {
+      grid-area: sidebar;
+      background: linear-gradient(to bottom, var(--dark-accent), var(--deep-space));
+      padding: 40px 30px;
+      color: var(--light-gray);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      width: var(--sidebar-width);
+      height: 100vh;
     }
-    section {
-      margin-bottom: 50px;
-      scroll-margin-top: 80px; /* offset for sticky navbar */
+    
+    .profile-section {
+      text-align: center;
+      margin-bottom: 40px;
     }
-    h2 {
-      color: #19350C; /* Phthalo Green */
-      border-bottom: 3px solid #687D31; /* Mustard Green */
-      padding-bottom: 7px;
-      margin-bottom: 25px;
+    
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--moonstone);
+      margin: 0 auto 20px;
+      background-color: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--deep-space);
+      font-size: 50px;
     }
-    a {
-      color: #687D31; /* Mustard Green */
+    
+    .profile-section h1 {
+      color: var(--white);
+      font-size: 1.8em;
+      margin-bottom: 5px;
+    }
+    
+    .profile-section p {
+      color: var(--light-gray);
+      font-size: 1em;
+      margin-bottom: 30px;
+    }
+    
+    .contact-info {
+      margin-top: 20px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .contact-item i {
+      color: var(--moonstone);
+      font-size: 1.2em;
+      width: 25px;
+    }
+    
+    .contact-item a {
+      color: var(--light-gray);
       text-decoration: none;
-      font-weight: bold;
+      transition: color 0.3s;
     }
-    a:hover {
-      color: #6FA9BB; /* Moonstone Blue */
-      text-decoration: underline;
+    
+    .contact-item a:hover {
+      color: var(--moonstone);
+    }
+    
+    .contact-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    
+    .contact-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 20px;
+      background: var(--moonstone);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 5px;
+      transition: all 0.3s;
+      font-weight: 600;
+    }
+    
+    .contact-button:hover {
+      background: var(--mustard-green);
+      transform: translateY(-2px);
+    }
+
+    /* Main Content */
+    main {
+      grid-area: main;
+      padding: 40px;
+      overflow-y: auto;
+      background-color: var(--light-gray);
+    }
+    
+    .page-section {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    h2 {
+      color: var(--phthalo-green);
+      border-bottom: 2px solid var(--mustard-green);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    h2 i {
+      color: var(--moonstone);
+    }
+
+    /* About Section */
+    .about-content {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+    }
+    
+    .about-text {
+      flex: 2;
+    }
+    
+    .about-text p {
+      margin-bottom: 15px;
+      line-height: 1.7;
+    }
+    
+    .skills {
+      margin-top: 20px;
+      background: rgba(111, 169, 187, 0.1);
+      padding: 20px;
+      border-radius: 8px;
+    }
+    
+    .skills h3 {
+      color: var(--phthalo-green);
+      margin-bottom: 15px;
+    }
+    
+    .skill-category {
+      margin-bottom: 15px;
+    }
+    
+    .skill-category h4 {
+      color: var(--deep-space);
+      font-size: 0.9em;
+      margin-bottom: 5px;
+    }
+    
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .skill-item {
+      background: var(--moonstone);
+      color: var(--white);
+      padding: 5px 10px;
+      border-radius: 15px;
+      font-size: 0.8em;
+      font-weight: 500;
+    }
+
+    /* Services Section */
+    .services-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    
+    .service-card {
+      background: linear-gradient(to bottom, var(--white), #f8f8f8);
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--moonstone);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+      border-left: 4px solid var(--mustard-green);
+    }
+    
+    .service-card h3 {
+      margin-top: 0;
+      color: var(--phthalo-green);
+      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .service-card h3 i {
+      color: var(--moonstone);
+      font-size: 1.5em;
+    }
+    
+    .service-card p {
+      color: var(--deep-space);
+      font-size: 0.95em;
+      line-height: 1.6;
     }
 
     /* Project Cards */
     .projects-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
+    
     .project-card {
-      background-color: #FFFFFF;
+      background: linear-gradient(to bottom, var(--white), #f8f8f8);
       border-radius: 10px;
       padding: 20px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--moonstone);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      filter: grayscale(30%);
+      opacity: 0.9;
     }
+    
     .project-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+      border-left: 4px solid var(--mustard-green);
+      filter: grayscale(0%);
+      opacity: 1;
     }
+    
+    .wip-badge {
+      position: absolute;
+      top: 15px;
+      right: -30px;
+      background: var(--mustard-green);
+      color: white;
+      padding: 5px 30px;
+      font-size: 0.8em;
+      transform: rotate(45deg);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
     .project-card h3 {
       margin-top: 0;
-      color: #19350C; /* Phthalo Green */
+      color: var(--phthalo-green);
+      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
+    
+    .project-card h3 i {
+      color: var(--moonstone);
+    }
+    
     .project-card p {
-      color: #406768; /* Deep Space Sparkle */
+      color: var(--deep-space);
+      font-size: 0.95em;
+      flex-grow: 1;
+    }
+    
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0;
+    }
+    
+    .project-tag {
+      background: var(--light-gray);
+      color: var(--deep-space);
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.75em;
+      font-weight: 500;
+    }
+
+    /* Work in Progress Banner */
+    .wip-banner {
+      background: linear-gradient(135deg, var(--moonstone), var(--mustard-green));
+      color: white;
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .wip-banner i {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      display: block;
+    }
+    
+    .wip-banner h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.5em;
+    }
+    
+    .wip-banner p {
+      margin: 0;
+      font-size: 1.1em;
+      opacity: 0.9;
     }
 
     /* Buttons */
     a.button {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: #6FA9BB; /* Moonstone Blue */
-      color: #D5D3CC; /* Light Gray */
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 15px;
+      padding: 10px 18px;
+      background: var(--moonstone);
+      color: var(--white);
       border-radius: 5px;
       text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.2s;
+      font-weight: 600;
+      font-size: 0.9em;
+      transition: all 0.2s;
     }
+    
     a.button:hover {
-      background-color: #687D31; /* Mustard Green */
+      background: var(--mustard-green);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
-    /* Contact links */
-    .contact a {
-      color: #687D31; /* Mustard Green */
-      font-weight: bold;
+    /* Scroll to Top Button */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--moonstone);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
     }
-    .contact a:hover {
-      color: #6FA9BB; /* Moonstone Blue */
+    
+    .scroll-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .scroll-to-top:hover {
+      background: var(--mustard-green);
+      transform: translateY(-5px);
     }
 
-    /* CV button */
-    .cv-button {
-      margin-bottom: 30px;
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      body {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas: 
+          "header"
+          "main"
+          "sidebar";
+      }
+      
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        order: 3;
+        padding: 20px;
+      }
+      
+      .profile-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .contact-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 0;
+      }
+      
+      .contact-item {
+        margin-bottom: 0;
+      }
+      
+      .contact-buttons {
+        flex-direction: row;
+        justify-content: center;
+      }
+      
+      header {
+        justify-content: center;
+        padding: 15px;
+      }
+      
+      main {
+        padding: 20px;
+      }
+      
+      .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .nav-menu a {
+        padding: 8px 15px;
+        font-size: 0.9em;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .contact-buttons {
+        flex-direction: column;
+      }
+      
+      .services-container, .projects-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .about-content {
+        flex-direction: column;
+      }
+      
+      .scroll-to-top {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+        bottom: 15px;
+        right: 15px;
+      }
     }
   </style>
 </head>
 <body>
 
+<!-- Header/Navigation -->
 <header>
-  <h1>Zahra Goraya</h1>
-  <p>Penultimate-Year Mathematics Student | Aspiring Finance Professional</p>
+  <nav class="nav-menu">
+    <a href="#about" class="active">About</a>
+    <a href="cv.html">CV</a>
+    <a href="#services">What I'm Doing</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
-<!-- Sticky Navbar -->
-<nav>
-  <a href="#about">About</a>
-  <a href="cv.html">CV</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
-</nav>
+<!-- Sidebar with Contact Info -->
+<aside class="sidebar">
+  <div class="profile-section">
+    <div class="profile-img">
+      <i class="fas fa-user"></i>
+    </div>
+    <h1>Zahra Goraya</h1>
+    <p>Mathematics Student</p>
+    
+    <div class="contact-info">
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <a href="mailto:ZahraGoraya@outlook.com">ZahraGoraya@outlook.com</a>
+      </div>
+      <div class="contact-item">
+        <i class="fab fa-linkedin"></i>
+        <a href="https://www.linkedin.com/in/zahra-goraya" target="_blank">linkedin.com/in/zahra-goraya</a>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-graduation-cap"></i>
+        <span>Queen Mary University of London</span>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>London, UK</span>
+      </div>
+    </div>
+    
+    <div class="contact-buttons">
+      <a href="mailto:ZahraGoraya@outlook.com" class="contact-button">
+        <i class="fas fa-envelope"></i> Email Me
+      </a>
+      <a href="https://www.linkedin.com/in/zahra-goraya" target="_blank" class="contact-button">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+    </div>
+  </div>
+</aside>
 
+<!-- Main Content -->
 <main>
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I'm Zahra Goraya, currently in my penultimate year of studying Mathematics at Queen Mary University of London. I have a strong interest in finance, quantitative analysis, and portfolio management, and I enjoy using data-driven approaches to solve problems and make informed decisions.</p>
-
-    <!-- CV Button -->
-    <p class="cv-button"><a href="cv.html" class="button">View Full CV</a></p>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects-container">
-      <div class="project-card">
-        <h3>DCF Valuation of Apple (Excel)</h3>
-        <p>Built a discounted cash flow model to estimate Apple’s intrinsic value, incorporating revenue growth, margins, and discount rates.</p>
-        <a href="#" class="button">View Project</a>
-      </div>
-      <div class="project-card">
-        <h3>Portfolio Risk Analysis (Python)</h3>
-        <p>Simulated portfolio performance and calculated Value at Risk (VaR) using historical data and Monte Carlo methods.</p>
-        <a href="#" class="button">View Project</a>
-      </div>
-      <div class="project-card">
-        <h3>Investment Pitch: Tesla (PDF)</h3>
-        <p>Short, professional stock pitch report highlighting potential investment opportunities and risks.</p>
-        <a href="#" class="button">View Project</a>
+  <!-- About Section -->
+  <section id="about" class="page-section">
+    <h2><i class="fas fa-user"></i> About Me</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>Hello! I'm Zahra Goraya, a dedicated Mathematics student at Queen Mary University of London with a strong passion for finance and quantitative analysis. I'm particularly interested in portfolio management, risk assessment, and data-driven investment strategies.</p>
+        <p>My mathematical background has equipped me with strong analytical skills and the ability to approach complex problems with logical, structured thinking. I enjoy applying these skills to financial modeling and market analysis.</p>
+        <p>When I'm not studying or working on finance projects, I enjoy following market trends, reading about financial innovations, and expanding my programming skills in Python and R.</p>
+        
+        <div class="skills">
+          <h3>Key Skills</h3>
+          
+          <div class="skill-category">
+            <h4>Quantitative Analysis</h4>
+            <div class="skill-items">
+              <span class="skill-item">Financial Modeling</span>
+              <span class="skill-item">Statistical Analysis</span>
+              <span class="skill-item">DCF Valuation</span>
+              <span class="skill-item">Risk Assessment</span>
+            </div>
+          </div>
+          
+          <div class="skill-category">
+            <h4>Programming & Tools</h4>
+            <div class="skill-items">
+              <span class="skill-item">Python</span>
+              <span class="skill-item">R</span>
+              <span class="skill-item">Excel/VBA</span>
+              <span class="skill-item">MATLAB</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- CV Button -->
+        <p><a href="cv.html" class="button"><i class="fas fa-download"></i>View Full CV</a></p>
       </div>
     </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p class="contact">Connect with me on <a href="https://www.linkedin.com/in/zahra-goraya" target="_blank">LinkedIn</a> or email me at <a href="mailto:ZahraGoraya@outlook.com">ZahraGoraya@outlook.com</a>.</p>
+  <!-- Services Section -->
+  <section id="services" class="page-section">
+    <h2><i class="fas fa-cogs"></i> What I'm Doing</h2>
+    <div class="services-container">
+      <div class="service-card">
+        <h3><i class="fas fa-chart-line"></i> Financial Analysis</h3>
+        <p>Comprehensive financial modeling and analysis to support investment decisions and business strategy.</p>
+      </div>
+      
+      <div class="service-card">
+        <h3><i class="fas fa-calculator"></i> Quantitative Modeling</h3>
+        <p>Development of sophisticated mathematical models for risk assessment, pricing, and forecasting.</p>
+      </div>
+      
+      <div class="service-card">
+        <h3><i class="fas fa-code"></i> Data Analysis</h3>
+        <p>Transforming complex datasets into actionable insights using Python, R, and statistical methods.</p>
+      </div>
+      
+      <div class="service-card">
+        <h3><i class="fas fa-chart-pie"></i> Investment Research</h3>
+        <p>In-depth analysis of companies, industries, and markets to identify investment opportunities.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="page-section">
+    <h2><i class="fas fa-folder"></i> Projects</h2>
+    
+    <div class="wip-banner">
+      <i class="fas fa-tools"></i>
+      <h3>Work in Progress</h3>
+      <p>Exciting projects coming soon! Check back for updates.</p>
+    </div>
+    
+    <div class="projects-container">
+      <div class="project-card">
+        <div class="wip-badge">Coming Soon</div>
+        <h3><i class="fas fa-chart-line"></i> DCF Valuation of Apple (Excel)</h3>
+        <p>Building a comprehensive discounted cash flow model to estimate Apple's intrinsic value, incorporating revenue growth projections, margin analysis, and WACC calculation.</p>
+        <div class="project-tags">
+          <span class="project-tag">Financial Modeling</span>
+          <span class="project-tag">Valuation</span>
+          <span class="project-tag">Excel</span>
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <div class="wip-badge">Coming Soon</div>
+        <h3><i class="fas fa-chart-bar"></i> Portfolio Risk Analysis (Python)</h3>
+        <p>Simulating portfolio performance using historical data, calculating Value at Risk (VaR) through Monte Carlo methods, and optimizing asset allocation for risk-adjusted returns.</p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Risk Analysis</span>
+          <span class="project-tag">Monte Carlo</span>
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <div class="wip-badge">Coming Soon</div>
+        <h3><i class="fas fa-file-pdf"></i> Investment Pitch: Tesla (PDF)</h3>
+        <p>Developing a professional stock pitch report analyzing Tesla's market position, competitive advantages, financial performance, and future growth potential.</p>
+        <div class="project-tags">
+          <span class="project-tag">Equity Research</span>
+          <span class="project-tag">Investment Analysis</span>
+          <span class="project-tag">Financial Reporting</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="page-section">
+    <h2><i class="fas fa-envelope"></i> Contact</h2>
+    <p>I'm always interested in connecting with finance professionals, fellow students, and potential mentors. Feel free to reach out to me through any of the following channels:</p>
+    
+    <div class="contact-buttons" style="flex-direction: row; justify-content: center; margin-top: 30px;">
+      <a href="mailto:ZahraGoraya@outlook.com" class="contact-button">
+        <i class="fas fa-envelope"></i> Email Me
+      </a>
+      <a href="https://www.linkedin.com/in/zahra-goraya" target="_blank" class="contact-button">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+    </div>
   </section>
 </main>
+
+<!-- Scroll to Top Button -->
+<div class="scroll-to-top" id="scrollToTop">
+  <i class="fas fa-arrow-up"></i>
+</div>
+
+<script>
+  // Simple JavaScript for navigation active state
+  document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    const sections = document.querySelectorAll('.page-section');
+    
+    window.addEventListener('scroll', function() {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= (sectionTop - 100)) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+          link.classList.add('active');
+        }
+      });
+      
+      // Show/hide scroll to top button
+      const scrollToTopBtn = document.getElementById('scrollToTop');
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+    
+    // Scroll to top functionality
+    document.getElementById('scrollToTop').addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
