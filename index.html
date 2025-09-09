@@ -10,40 +10,128 @@
       line-height: 1.6;
       margin: 0;
       padding: 0;
-      background-color: #f9f9f9;
-      color: #333;
+      background-color: #D5D3CC; /* Light Gray */
+      color: #406768; /* Deep Space Sparkle */
+      scroll-behavior: smooth;
     }
     header {
-      background-color: #0a3d62;
-      color: white;
-      padding: 20px 0;
+      background-color: #19350C; /* Phthalo Green */
+      color: #D5D3CC; /* Light Gray */
+      padding: 25px 0;
       text-align: center;
     }
     header h1 {
       margin: 0;
+      font-size: 2.5em;
     }
+    header p {
+      font-size: 1.2em;
+      color: #6FA9BB; /* Moonstone Blue */
+      margin-top: 5px;
+    }
+
+    /* Sticky Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: #406768; /* Deep Space Sparkle */
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 10px 0;
+      z-index: 100;
+    }
+    nav a {
+      color: #D5D3CC; /* Light Gray */
+      text-decoration: none;
+      font-weight: bold;
+      padding: 5px 10px;
+      transition: background-color 0.2s, color 0.2s;
+      border-radius: 5px;
+    }
+    nav a:hover {
+      background-color: #6FA9BB; /* Moonstone Blue */
+      color: #19350C; /* Phthalo Green */
+    }
+
     main {
-      padding: 20px;
+      padding: 30px 20px;
       max-width: 900px;
       margin: auto;
     }
     section {
-      margin-bottom: 40px;
+      margin-bottom: 50px;
+      scroll-margin-top: 80px; /* offset for sticky navbar */
     }
     h2 {
-      color: #0a3d62;
-      border-bottom: 2px solid #0a3d62;
-      padding-bottom: 5px;
+      color: #19350C; /* Phthalo Green */
+      border-bottom: 3px solid #687D31; /* Mustard Green */
+      padding-bottom: 7px;
+      margin-bottom: 25px;
     }
     a {
-      color: #0a3d62;
+      color: #687D31; /* Mustard Green */
       text-decoration: none;
+      font-weight: bold;
     }
     a:hover {
+      color: #6FA9BB; /* Moonstone Blue */
       text-decoration: underline;
     }
-    ul {
-      padding-left: 20px;
+
+    /* Project Cards */
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .project-card {
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+    }
+    .project-card h3 {
+      margin-top: 0;
+      color: #19350C; /* Phthalo Green */
+    }
+    .project-card p {
+      color: #406768; /* Deep Space Sparkle */
+    }
+
+    /* Buttons */
+    a.button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #6FA9BB; /* Moonstone Blue */
+      color: #D5D3CC; /* Light Gray */
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.2s;
+    }
+    a.button:hover {
+      background-color: #687D31; /* Mustard Green */
+    }
+
+    /* Contact links */
+    .contact a {
+      color: #687D31; /* Mustard Green */
+      font-weight: bold;
+    }
+    .contact a:hover {
+      color: #6FA9BB; /* Moonstone Blue */
+    }
+
+    /* CV button */
+    .cv-button {
+      margin-bottom: 30px;
     }
   </style>
 </head>
@@ -51,29 +139,53 @@
 
 <header>
   <h1>Zahra Goraya</h1>
-  <p>Mathematics Student | Aspiring Finance Professional</p>
+  <p>Penultimate-Year Mathematics Student | Aspiring Finance Professional</p>
 </header>
+
+<!-- Sticky Navbar -->
+<nav>
+  <a href="#about">About</a>
+  <a href="cv.html">CV</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
 
 <main>
   <section id="about">
     <h2>About Me</h2>
-    <p>Hello! I'm Zahra Goraya, a Mathematics student in my penultimate year of study at Queen Mary University of London with a strong interest in finance, quantitative analysis, and portfolio management. I enjoy using data-driven approaches to solve problems and make informed decisions.</p>
+    <p>Hello! I'm Zahra Goraya, currently in my penultimate year of studying Mathematics at Queen Mary University of London. I have a strong interest in finance, quantitative analysis, and portfolio management, and I enjoy using data-driven approaches to solve problems and make informed decisions.</p>
+
+    <!-- CV Button -->
+    <p class="cv-button"><a href="cv.html" class="button">View Full CV</a></p>
   </section>
 
   <section id="projects">
     <h2>Projects</h2>
-    <ul>
-      <li><a href="#">DCF Valuation of Apple (Excel)</a> – Built a discounted cash flow model to estimate Apple’s intrinsic value.</li>
-      <li><a href="#">Portfolio Risk Analysis (Python)</a> – Simulated portfolio performance and calculated Value at Risk (VaR) using historical data.</li>
-      <li><a href="#">Investment Pitch: Tesla (PDF)</a> – Short, professional stock pitch report highlighting potential opportunities.</li>
-    </ul>
+    <div class="projects-container">
+      <div class="project-card">
+        <h3>DCF Valuation of Apple (Excel)</h3>
+        <p>Built a discounted cash flow model to estimate Apple’s intrinsic value, incorporating revenue growth, margins, and discount rates.</p>
+        <a href="#" class="button">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Portfolio Risk Analysis (Python)</h3>
+        <p>Simulated portfolio performance and calculated Value at Risk (VaR) using historical data and Monte Carlo methods.</p>
+        <a href="#" class="button">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Investment Pitch: Tesla (PDF)</h3>
+        <p>Short, professional stock pitch report highlighting potential investment opportunities and risks.</p>
+        <a href="#" class="button">View Project</a>
+      </div>
+    </div>
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
-    <p>Connect with me on <a href="https://www.linkedin.com/in/zahra-goraya/" target="_blank">LinkedIn</a> or email me at <a href="mailto:ZahraGoraya@outlook.com">ZahraGoraya@outlook.com</a>.</p>
+    <p class="contact">Connect with me on <a href="https://www.linkedin.com/in/zahra-goraya" target="_blank">LinkedIn</a> or email me at <a href="mailto:ZahraGoraya@outlook.com">ZahraGoraya@outlook.com</a>.</p>
   </section>
 </main>
 
 </body>
 </html>
+
