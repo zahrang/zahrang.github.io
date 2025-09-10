@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zahra Goraya - CV</title>
+  <title>Zahra Goraya | CV</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css"> <!-- optional if you separate styles -->
   <style>
+    /* Copy over the same CSS from index.html for consistent design */
     :root {
       --deep-space: #406768;
       --phthalo-green: #19350C;
@@ -16,13 +18,9 @@
       --dark-accent: #2C4A4A;
       --sidebar-width: 300px;
     }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
+
+    /* Reset & layout styles reused from index.html */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
@@ -31,13 +29,12 @@
       display: grid;
       grid-template-columns: var(--sidebar-width) 1fr;
       grid-template-rows: 80px 1fr;
-      grid-template-areas: 
+      grid-template-areas:
         "sidebar header"
         "sidebar main";
       min-height: 100vh;
     }
 
-    /* Header/Navigation */
     header {
       grid-area: header;
       background: var(--white);
@@ -48,12 +45,7 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       z-index: 10;
     }
-    
-    .nav-menu {
-      display: flex;
-      gap: 10px;
-    }
-    
+    .nav-menu { display: flex; gap: 10px; }
     .nav-menu a {
       color: var(--deep-space);
       text-decoration: none;
@@ -62,11 +54,11 @@
       border-radius: 5px;
       transition: all 0.3s ease;
     }
-    
     .nav-menu a:hover, .nav-menu a.active {
       background-color: var(--moonstone);
       color: var(--white);
     }
+    .mobile-menu-btn { display: none; background: none; border: none; font-size: 24px; color: var(--deep-space); cursor: pointer; padding: 10px; }
 
     /* Sidebar */
     .sidebar {
@@ -79,154 +71,33 @@
       position: fixed;
       width: var(--sidebar-width);
       height: 100vh;
+      overflow-y: auto;
     }
-    
-    .profile-section {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    
+    .profile-section { text-align: center; margin-bottom: 40px; }
     .profile-img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--moonstone);
-      margin: 0 auto 20px;
-      background-color: var(--light-gray);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--deep-space);
-      font-size: 50px;
+      width: 150px; height: 150px; border-radius: 50%; background: var(--light-gray);
+      display: flex; align-items: center; justify-content: center;
+      border: 4px solid var(--moonstone); margin: 0 auto 20px;
+      color: var(--deep-space); font-size: 50px;
     }
-    
-    .profile-section h1 {
-      color: var(--white);
-      font-size: 1.8em;
-      margin-bottom: 5px;
-    }
-    
-    .profile-section p {
-      color: var(--light-gray);
-      font-size: 1em;
-      margin-bottom: 30px;
-    }
-    
-    .contact-info {
-      margin-top: 20px;
-    }
-    
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-    
-    .contact-item i {
-      color: var(--moonstone);
-      font-size: 1.2em;
-      width: 25px;
-    }
-    
-    .contact-item a {
-      color: var(--light-gray);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    
-    .contact-item a:hover {
-      color: var(--moonstone);
-    }
-    
-    .contact-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-top: 30px;
-    }
-    
-    .contact-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 12px 20px;
-      background: var(--moonstone);
-      color: var(--white);
-      text-decoration: none;
-      transition: all 0.3s;
-      font-weight: 600;
-    }
-    
-    .contact-button:hover {
-      background: var(--mustard-green);
-      transform: translateY(-2px);
-    }
+    .profile-section h1 { color: var(--white); font-size: 1.8em; margin-bottom: 5px; }
+    .profile-section p { color: var(--light-gray); font-size: 1em; margin-bottom: 30px; }
 
-    /* Main Content */
+    /* Main content */
     main {
       grid-area: main;
       padding: 40px;
       overflow-y: auto;
       background-color: var(--light-gray);
     }
-    
-    .cv-header {
-      text-align: center;
-      margin-bottom: 30px;
-      padding-bottom: 20px;
-      border-bottom: 2px solid var(--mustard-green);
-    }
-    
-    .cv-header h1 {
-      margin: 0;
-      font-size: 2.5em;
-      color: var(--phthalo-green);
-      position: relative;
-      display: inline-block;
-    }
-    
-    .cv-header h1:after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 60%;
-      height: 4px;
-      background: var(--moonstone);
-    }
-    
-    .cv-contact {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin: 15px 0;
-    }
-    
-    .cv-contact-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--deep-space);
-    }
-    
-    .cv-contact-item i {
-      color: var(--moonstone);
-    }
-
-    /* CV Sections */
-    .cv-section {
-      margin-bottom: 40px;
-      padding: 25px;
+    .page-section {
       background: var(--white);
       border-radius: 10px;
+      padding: 30px;
+      margin-bottom: 30px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
-    
-    .cv-section h2 {
+    h2 {
       color: var(--phthalo-green);
       border-bottom: 2px solid var(--mustard-green);
       padding-bottom: 10px;
@@ -235,273 +106,63 @@
       align-items: center;
       gap: 10px;
     }
-    
-    .cv-section h2 i {
-      color: var(--moonstone);
-    }
-    
-    .cv-item {
-      margin-bottom: 20px;
-      position: relative;
-      padding-left: 30px;
-    }
-    
-    .cv-item:before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 8px;
-      width: 12px;
-      height: 12px;
-      border: 2px solid var(--moonstone);
-      border-radius: 50%;
-    }
-    
-    .cv-item:after {
-      content: '';
-      position: absolute;
-      left: 5px;
-      top: 22px;
-      width: 2px;
-      height: calc(100% + 10px);
-      background: var(--moonstone);
-    }
-    
-    .cv-item:last-child:after {
-      display: none;
-    }
-    
-    .cv-item-header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-    
-    .cv-item-title {
-      font-weight: 600;
-      color: var(--phthalo-green);
-    }
-    
-    .cv-item-date {
-      color: var(--moonstone);
-      font-weight: 500;
-    }
-    
-    .cv-item-subtitle {
-      font-style: italic;
-      color: var(--deep-space);
-      margin-bottom: 8px;
-    }
-    
-    .cv-item-list {
-      list-style-type: none;
-    }
-    
-    .cv-item-list li {
-      margin-bottom: 5px;
-      position: relative;
-      padding-left: 20px;
-    }
-    
-    .cv-item-list li:before {
-      content: '•';
-      position: absolute;
-      left: 0;
-      color: var(--mustard-green);
-    }
-    
-    /* Languages Section */
-    .languages-container {
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-    
-    .language-item {
-      background: rgba(111, 169, 187, 0.1);
-      padding: 15px;
-      border-radius: 8px;
-      flex: 1;
-      min-width: 200px;
-    }
-    
-    .language-item h4 {
-      color: var(--phthalo-green);
-      margin-bottom: 10px;
-    }
-    
-    .language-item p {
-      color: var(--deep-space);
-    }
-    
-    /* Download Button */
-    .download-btn {
-      text-align: center;
-      margin-top: 30px;
-    }
-    
-    a.button {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      background: var(--moonstone);
-      color: var(--white);
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1em;
-      transition: all 0.2s;
-    }
-    
-    a.button:hover {
-      background: var(--mustard-green);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
+    h2 i { color: var(--moonstone); }
 
-    /* Scroll to Top Button */
-    .scroll-to-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
+    /* CV Embed */
+    .cv-container {
+      text-align: center;
+    }
+    .cv-container iframe {
+      width: 100%;
+      height: 800px;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .cv-download {
+      margin-top: 20px;
+      display: inline-block;
       background: var(--moonstone);
       color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      z-index: 1000;
-      opacity: 0;
-      visibility: hidden;
+      padding: 12px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
     }
-    
-    .scroll-to-top.show {
-      opacity: 1;
-      visibility: visible;
-    }
-    
-    .scroll-to-top:hover {
+    .cv-download:hover {
       background: var(--mustard-green);
-      transform: translateY(-5px);
     }
-    
-    /* Responsive Design */
-    @media (max-width: 900px) {
+
+    /* Responsive tweaks (same as index.html) */
+    @media (max-width: 1024px) {
       body {
         grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr auto;
-        grid-template-areas: 
-          "header"
-          "main"
-          "sidebar";
+        grid-template-rows: auto 1fr;
+        grid-template-areas: "header" "main";
       }
-      
-      .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-        order: 3;
-        padding: 20px;
-      }
-      
-      .profile-section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .contact-info {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        margin-top: 0;
-      }
-      
-      .contact-item {
-        margin-bottom: 0;
-      }
-      
-      .contact-buttons {
-        flex-direction: row;
-        justify-content: center;
-      }
-      
-      header {
-        justify-content: center;
-        padding: 15px;
-      }
-      
-      main {
-        padding: 20px;
-      }
-      
-      .cv-item-header {
-        flex-direction: column;
-      }
-      
-      .cv-item-date {
-        margin-top: 5px;
-      }
-      
-      .scroll-to-top {
-        bottom: 20px;
-        right: 20px;
-      }
+      .sidebar { position: fixed; left: -100%; transition: left 0.3s ease; }
+      .sidebar.active { left: 0; }
+      .mobile-menu-btn { display: block; }
+      .nav-menu { display: none; }
+      main { padding: 20px; }
     }
-    
-    @media (max-width: 600px) {
-      .nav-menu {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      
-      .nav-menu a {
-        padding: 8px 15px;
-        font-size: 0.9em;
-      }
-      
-      .contact-info {
-        flex-direction: column;
-        gap: 10px;
-      }
-      
-      .contact-buttons {
-        flex-direction: column;
-      }
-      
-      .languages-container {
-        flex-direction: column;
-      }
-      
-      .cv-contact {
-        flex-direction: column;
-        gap: 10px;
-      }
-      
-      .scroll-to-top {
-        width: 45px;
-        height: 45px;
-        font-size: 18px;
-        bottom: 15px;
-        right: 15px;
-      }
+    @media (max-width: 768px) {
+      .page-section { padding: 20px; }
+      .cv-container iframe { height: 600px; }
+    }
+    @media (max-width: 480px) {
+      .cv-container iframe { height: 500px; }
     }
   </style>
 </head>
 <body>
 
-<!-- Header/Navigation -->
 <header>
+  <button class="mobile-menu-btn" id="mobileMenuBtn">
+    <i class="fas fa-bars"></i>
+  </button>
   <nav class="nav-menu">
-    <a href="index.html">Home</a>
+    <a href="index.html">About</a>
     <a href="cv.html" class="active">CV</a>
     <a href="index.html#services">What I'm Doing</a>
     <a href="index.html#projects">Projects</a>
@@ -509,215 +170,31 @@
   </nav>
 </header>
 
-<!-- Sidebar with Contact Info -->
-<aside class="sidebar">
+<aside class="sidebar" id="sidebar">
   <div class="profile-section">
-    <div class="profile-img">
-      <i class="fas fa-user"></i>
-    </div>
+    <div class="profile-img"><i class="fas fa-user"></i></div>
     <h1>Zahra Goraya</h1>
     <p>Mathematics Student</p>
-    
-    <div class="contact-info">
-      <div class="contact-item">
-        <i class="fas fa-envelope"></i>
-        <a href="mailto:ZahraGoraya@outlook.com">ZahraGoraya@outlook.com</a>
-      </div>
-      <div class="contact-item">
-        <i class="fab fa-linkedin"></i>
-        <a href="https://www.linkedin.com/in/zahra-goraya" target="_blank">linkedin.com/in/zahra-goraya</a>
-      </div>
-      <div class="contact-item">
-        <i class="fas fa-graduation-cap"></i>
-        <span>Queen Mary University of London</span>
-      </div>
-      <div class="contact-item">
-        <i class="fas fa-map-marker-alt"></i>
-        <span>London, UK</span>
-      </div>
-    </div>
-    
-    <div class="contact-buttons">
-      <a href="mailto:ZahraGoraya@outlook.com" class="contact-button">
-        <i class="fas fa-envelope"></i> Email Me
-      </a>
-      <a href="https://www.linkedin.com/in/zahra-goraya" target="_blank" class="contact-button">
-        <i class="fab fa-linkedin"></i> LinkedIn
-      </a>
-    </div>
   </div>
 </aside>
 
-<!-- Main Content -->
 <main>
-  <!-- CV Header -->
-  <div class="cv-header">
-    <h1>Zahra Goraya</h1>
-    <div class="cv-contact">
-      <div class="cv-contact-item">
-        <i class="fas fa-envelope"></i>
-        <span>ZahraGoraya@outlook.com</span>
-      </div>
-      <div class="cv-contact-item">
-        <i class="fas fa-phone"></i>
-        <span>07784577796</span>
-      </div>
-      <div class="cv-contact-item">
-        <i class="fab fa-linkedin"></i>
-        <span>linkedin.com/in/zahra-goraya</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Education Section -->
-  <section class="cv-section" id="education">
-    <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-    
-    <div class="cv-item">
-      <div class="cv-item-header">
-        <div class="cv-item-title">Queen Mary University of London</div>
-        <div class="cv-item-date">2024-2027</div>
-      </div>
-      <div class="cv-item-subtitle">Undergraduate Degree in Mathematics</div>
-      <ul class="cv-item-list">
-        <li>Relevant Modules:
-          <ul class="cv-item-list">
-            <li>Statistics - acquired proficiency in R (programming language), applying this in data analysis and visualisation</li>
-            <li>Programming - strengthened programming proficiency in Python</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    
-    <div class="cv-item">
-      <div class="cv-item-header">
-        <div class="cv-item-title">Mayfield Grammar School Gravesend</div>
-        <div class="cv-item-date">2016-2023</div>
-      </div>
-      <ul class="cv-item-list">
-        <li>A-Levels in Maths, Physics, and Psychology</li>
-        <li>12 GCSEs</li>
-      </ul>
+  <section class="page-section">
+    <h2><i class="fas fa-file-alt"></i> My CV</h2>
+    <div class="cv-container">
+      <iframe src="CV.pdf"></iframe>
+      <br>
+      <a href="ZahraGorayaCV.pdf" class="cv-download" download>
+        <i class="fas fa-download"></i> Download CV
+      </a>
     </div>
   </section>
-
-  <!-- Experience Section -->
-  <section class="cv-section" id="experience">
-    <h2><i class="fas fa-briefcase"></i> Experience</h2>
-    
-    <div class="cv-item">
-      <div class="cv-item-header">
-        <div class="cv-item-title">Marks & Spencer</div>
-        <div class="cv-item-date">Oct 2023 - Present</div>
-      </div>
-      <div class="cv-item-subtitle">Retail Assistant</div>
-      <ul class="cv-item-list">
-        <li>Influenced a 3% improvement in customer satisfaction scores by consistently resolving customer queries and ensuring accurate order processing.</li>
-        <li>Handled high volumes of customer inquiries daily, resolving issues efficiently while maintaining store service standards.</li>
-        <li>Developed strong customer service, communication, and problem-solving skills.</li>
-        <li>Exceeded service targets by maintaining accuracy in order processing and strong attention to detail in high-pressure situations.</li>
-      </ul>
-    </div>
-    
-    <div class="cv-item">
-      <div class="cv-item-header">
-        <div class="cv-item-title">ICAEW Chartered Accountants</div>
-        <div class="cv-item-date">Feb 2023 – Mar 2023</div>
-      </div>
-      <div class="cv-item-subtitle">Online Work Experience</div>
-      <ul class="cv-item-list">
-        <li>Expanded knowledge of accountancy through a structured programme, covering key topics including bookkeeping and financial reporting.</li>
-        <li>Gained exposure to 4 key areas of the financial sector and developed knowledge of industry standards.</li>
-      </ul>
-    </div>
-    
-    <div class="cv-item">
-      <div class="cv-item-header">
-        <div class="cv-item-title">REED Recruitment Agency</div>
-        <div class="cv-item-date">Feb 2023 – Mar 2023</div>
-      </div>
-      <div class="cv-item-subtitle">Online Work Experience</div>
-      <ul class="cv-item-list">
-        <li>Produced a recruitment marketing advert during a 1-week work experience, liaising with 3 recruiters and presenting work to senior staff, gaining firsthand insight into agency operations.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Certifications Section -->
-  <section class="cv-section" id="certifications">
-    <h2><i class="fas fa-certificate"></i> Certifications</h2>
-    
-    <div class="cv-item">
-      <div class="cv-item-header">
-        <div class="cv-item-title">Bloomberg Market Concepts (BMC), Bloomberg LP</div>
-      </div>
-      <ul class="cv-item-list">
-        <li>Achieved Bloomberg Market Concepts certification, completing a 10-hour programme in Equities, Fixed Income, Currencies, and Economics.</li>
-        <li>Navigated Bloomberg Terminal functions to source, interpret, and evaluate real-time financial data.</li>
-        <li>Applied equity valuation methods, yield curve analysis, and FX market assessments to practical case studies.</li>
-        <li>Enhanced ability to synthesise market insights and communicate findings to support investment decisions.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Languages Section -->
-  <section class="cv-section" id="languages">
-    <h2><i class="fas fa-language"></i> Languages</h2>
-    <div class="languages-container">
-      <div class="language-item">
-        <h4>English</h4>
-        <p>Native proficiency</p>
-      </div>
-      <div class="language-item">
-        <h4>Punjabi</h4>
-        <p>Native proficiency</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Download Button -->
-  <div class="download-btn">
-    <a href="CV.pdf" class="button" download><i class="fas fa-download"></i> Download PDF Version</a>
-  </div>
 </main>
 
-<!-- Scroll to Top Button -->
-<div class="scroll-to-top" id="scrollToTop">
-  <i class="fas fa-arrow-up"></i>
-</div>
-
 <script>
-  // Simple JavaScript for navigation active state
-  document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.nav-menu a');
-    
-    // Set active class based on current page
-    navLinks.forEach(link => {
-      if (link.getAttribute('href') === 'cv.html') {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
-    });
-    
-    // Scroll to top functionality
-    const scrollToTopBtn = document.getElementById('scrollToTop');
-    
-    window.addEventListener('scroll', function() {
-      // Show/hide scroll to top button
-      if (window.pageYOffset > 300) {
-        scrollToTopBtn.classList.add('show');
-      } else {
-        scrollToTopBtn.classList.remove('show');
-      }
-    });
-    
-    scrollToTopBtn.addEventListener('click', function() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
+  // Mobile menu + sidebar toggle
+  document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('active');
   });
 </script>
 
