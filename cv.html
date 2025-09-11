@@ -38,11 +38,25 @@
       grid-area: header;
       background: var(--white);
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       align-items: center;
       padding: 0 40px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       z-index: 10;
+    }
+    
+    .home-button {
+      color: var(--deep-space);
+      text-decoration: none;
+      font-size: 1.5em;
+      padding: 10px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    
+    .home-button:hover {
+      background-color: var(--moonstone);
+      color: var(--white);
     }
 
     .nav-menu { display: flex; gap: 10px; }
@@ -122,22 +136,98 @@
     .cv-download { margin-top: 20px; display: inline-block; background: var(--moonstone); color: white; padding: 12px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; }
     .cv-download:hover { background: var(--mustard-green); }
 
+    /* Toggle Sidebar Button (Mobile Only) */
+    .toggle-sidebar {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--moonstone);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 98;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
     /* Responsive tweaks */
     @media (max-width: 1024px) {
-      body { grid-template-columns: 1fr; grid-template-rows: auto 1fr; grid-template-areas: "header" "main"; }
-      .sidebar { position: fixed; left: -100%; transition: left 0.3s ease; }
-      .sidebar.active { left: 0; }
-      .mobile-menu-btn { display: block; }
-      .nav-menu { display: none; }
-      main { padding: 20px; }
+      body { 
+        grid-template-columns: 1fr; 
+        grid-template-rows: auto 1fr; 
+        grid-template-areas: "header" "main"; 
+      }
+      
+      .sidebar { 
+        position: fixed; 
+        left: -100%; 
+        width: var(--sidebar-width);
+        height: 100vh;
+        z-index: 99;
+        transition: left 0.3s ease;
+      }
+      
+      .sidebar.active { 
+        left: 0; 
+      }
+      
+      .toggle-sidebar {
+        display: flex;
+      }
+      
+      header {
+        justify-content: space-between;
+        padding: 15px 20px;
+      }
+      
+      .mobile-menu-btn { 
+        display: block; 
+      }
+      
+      .nav-menu { 
+        display: none; 
+      }
+      
+      main { 
+        padding: 20px; 
+      }
     }
-    @media (max-width: 768px) { .page-section { padding: 20px; } .cv-container iframe { height: 600px; } }
-    @media (max-width: 480px) { .cv-container iframe { height: 500px; } }
+    
+    @media (max-width: 768px) { 
+      .page-section { 
+        padding: 20px; 
+      } 
+      .cv-container iframe { 
+        height: 600px; 
+      } 
+    }
+    
+    @media (max-width: 480px) { 
+      .cv-container iframe { 
+        height: 500px; 
+      } 
+      .toggle-sidebar {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+        bottom: 15px;
+        left: 15px;
+      }
+    }
   </style>
 </head>
 <body>
 
 <header>
+  <a href="index.html" class="home-button">
+    <i class="fas fa-home"></i>
+  </a>
   <button class="mobile-menu-btn" id="mobileMenuBtn">
     <i class="fas fa-bars"></i>
   </button>
@@ -186,6 +276,11 @@
   </div>
 </aside>
 
+<!-- Toggle Sidebar Button (Mobile Only) -->
+<div class="toggle-sidebar" id="toggleSidebar">
+  <i class="fas fa-user"></i>
+</div>
+
 <main>
   <section class="page-section">
     <h2><i class="fas fa-file-alt"></i> My CV</h2>
@@ -203,6 +298,25 @@
   // Mobile sidebar toggle
   document.getElementById('mobileMenuBtn').addEventListener('click', () => {
     document.getElementById('sidebar').classList.toggle('active');
+  });
+  
+  // Sidebar toggle for mobile
+  const toggleSidebar = document.getElementById('toggleSidebar');
+  const sidebar = document.getElementById('sidebar');
+  
+  if (toggleSidebar) {
+    toggleSidebar.addEventListener('click', function() {
+      sidebar.classList.toggle('active');
+    });
+  }
+  
+  // Close sidebar when clicking outside on mobile
+  document.addEventListener('click', function(event) {
+    if (sidebar.classList.contains('active') && 
+        !sidebar.contains(event.target) && 
+        (!toggleSidebar || !toggleSidebar.contains(event.target))) {
+      sidebar.classList.remove('active');
+    }
   });
 </script>
 

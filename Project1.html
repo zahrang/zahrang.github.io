@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zahra Goraya | Finance Portfolio</title>
+  <title>Zahra Goraya | Stock Portfolio Tracker</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -16,7 +16,13 @@
       --dark-accent: #2C4A4A;
       --sidebar-width: 300px;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
@@ -30,42 +36,492 @@
         "sidebar main";
       min-height: 100vh;
     }
-    header { grid-area: header; background: var(--white); display: flex; justify-content: flex-end; align-items: center; padding: 0 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 10; }
-    .nav-menu { display: flex; gap: 10px; }
-    .nav-menu a { color: var(--deep-space); text-decoration: none; font-weight: 600; padding: 10px 20px; border-radius: 5px; transition: all 0.3s ease; }
-    .nav-menu a:hover, .nav-menu a.active { background-color: var(--moonstone); color: var(--white); }
-    .mobile-menu-btn { display: none; background: none; border: none; font-size: 24px; color: var(--deep-space); cursor: pointer; padding: 10px; }
-    .sidebar { grid-area: sidebar; background: linear-gradient(to bottom, var(--dark-accent), var(--deep-space)); padding: 40px 30px; color: var(--light-gray); display: flex; flex-direction: column; position: fixed; width: var(--sidebar-width); height: 100vh; overflow-y: auto; }
-    .profile-section { text-align: center; margin-bottom: 40px; }
-    .profile-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--moonstone); margin: 0 auto 20px; background-color: var(--light-gray); display: flex; align-items: center; justify-content: center; color: var(--deep-space); font-size: 50px; }
-    .profile-section h1 { color: var(--white); font-size: 1.8em; margin-bottom: 5px; }
-    .profile-section p { color: var(--light-gray); font-size: 1em; margin-bottom: 30px; }
-    .contact-info { margin-top: 20px; }
-    .contact-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
-    .contact-item i { color: var(--moonstone); font-size: 1.2em; width: 25px; }
-    .contact-item a { color: var(--light-gray); text-decoration: none; transition: color 0.3s; }
-    .contact-item a:hover { color: var(--moonstone); }
-    .contact-buttons { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; }
-    .contact-button { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 20px; background: var(--moonstone); color: var(--white); text-decoration: none; border-radius: 5px; transition: all 0.3s; font-weight: 600; }
-    .contact-button:hover { background: var(--mustard-green); transform: translateY(-2px); }
-    main { grid-area: main; padding: 40px; overflow-y: auto; background-color: var(--light-gray); }
-    .page-section { background: var(--white); border-radius: 10px; padding: 30px; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-    h2 { color: var(--phthalo-green); border-bottom: 2px solid var(--mustard-green); padding-bottom: 10px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-    h2 i { color: var(--moonstone); }
-    .projects-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .project-card { background: linear-gradient(to bottom, var(--white), #f8f8f8); border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.08); transition: all 0.3s ease; border-left: 4px solid var(--moonstone); height: 100%; display: flex; flex-direction: column; position: relative; overflow: hidden; }
-    .project-card h3 { margin-top: 0; color: var(--phthalo-green); font-size: 1.2em; display: flex; align-items: center; gap: 8px; }
-    .project-card h3 i { color: var(--moonstone); }
-    .project-card p { color: var(--deep-space); font-size: 0.95em; flex-grow: 1; margin-bottom: 15px; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
-    .project-tag { background: var(--light-gray); color: var(--deep-space); padding: 3px 10px; border-radius: 12px; font-size: 0.75em; font-weight: 500; }
-    a.button { display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; padding: 10px 18px; background: var(--moonstone); color: var(--white); border-radius: 5px; text-decoration: none; font-weight: 600; font-size: 0.9em; transition: all 0.2s; }
-    a.button:hover { background: var(--mustard-green); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+
+    /* Header/Navigation */
+    header {
+      grid-area: header;
+      background: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+    
+    .home-button {
+      color: var(--deep-space);
+      text-decoration: none;
+      font-size: 1.5em;
+      padding: 10px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    
+    .home-button:hover {
+      background-color: var(--moonstone);
+      color: var(--white);
+    }
+    
+    .nav-menu {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .nav-menu a {
+      color: var(--deep-space);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-menu a:hover, .nav-menu a.active {
+      background-color: var(--moonstone);
+      color: var(--white);
+    }
+
+    /* Mobile menu button (hidden by default) */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--deep-space);
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      grid-area: sidebar;
+      background: linear-gradient(to bottom, var(--dark-accent), var(--deep-space));
+      padding: 40px 30px;
+      color: var(--light-gray);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      width: var(--sidebar-width);
+      height: 100vh;
+      overflow-y: auto;
+    }
+    
+    .profile-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--moonstone);
+      margin: 0 auto 20px;
+      background-color: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--deep-space);
+      font-size: 50px;
+    }
+    
+    .profile-section h1 {
+      color: var(--white);
+      font-size: 1.8em;
+      margin-bottom: 5px;
+    }
+    
+    .profile-section p {
+      color: var(--light-gray);
+      font-size: 1em;
+      margin-bottom: 30px;
+    }
+    
+    .contact-info {
+      margin-top: 20px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .contact-item i {
+      color: var(--moonstone);
+      font-size: 1.2em;
+      width: 25px;
+    }
+    
+    .contact-item a {
+      color: var(--light-gray);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .contact-item a:hover {
+      color: var(--moonstone);
+    }
+    
+    .contact-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    
+    .contact-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 20px;
+      background: var(--moonstone);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 5px;
+      transition: all 0.3s;
+      font-weight: 600;
+    }
+    
+    .contact-button:hover {
+      background: var(--mustard-green);
+      transform: translateY(-2px);
+    }
+
+    /* Main Content */
+    main {
+      grid-area: main;
+      padding: 40px;
+      overflow-y: auto;
+      background-color: var(--light-gray);
+    }
+    
+    .page-section {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    h2 {
+      color: var(--phthalo-green);
+      border-bottom: 2px solid var(--mustard-green);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    h2 i {
+      color: var(--moonstone);
+    }
+
+    /* Project Cards */
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    
+    .project-card {
+      background: linear-gradient(to bottom, var(--white), #f8f8f8);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--moonstone);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-card h3 {
+      margin-top: 0;
+      color: var(--phthalo-green);
+      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .project-card h3 i {
+      color: var(--moonstone);
+    }
+    
+    .project-card p {
+      color: var(--deep-space);
+      font-size: 0.95em;
+      flex-grow: 1;
+      margin-bottom: 15px;
+    }
+    
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0;
+    }
+    
+    .project-tag {
+      background: var(--light-gray);
+      color: var(--deep-space);
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.75em;
+      font-weight: 500;
+    }
+    
+    /* Buttons */
+    a.button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      padding: 10px 18px;
+      background: var(--moonstone);
+      color: var(--white);
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9em;
+      transition: all 0.2s;
+    }
+    
+    a.button:hover {
+      background: var(--mustard-green);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    /* Image styling */
+    .project-image {
+      width: 100%;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Scroll to Top Button */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--moonstone);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .scroll-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .scroll-to-top:hover {
+      background: var(--mustard-green);
+      transform: translateY(-5px);
+    }
+
+    /* Mobile Navigation Overlay */
+    .mobile-nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-nav-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .mobile-nav-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 300px;
+      height: 100%;
+      background: var(--white);
+      z-index: 101;
+      padding: 60px 20px 20px;
+      transition: right 0.3s ease;
+      overflow-y: auto;
+    }
+    
+    .mobile-nav-menu.active {
+      right: 0;
+    }
+    
+    .mobile-nav-menu a {
+      display: block;
+      padding: 15px;
+      color: var(--deep-space);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid var(--light-gray);
+    }
+    
+    .mobile-nav-menu a.active {
+      background-color: var(--moonstone);
+      color: var(--white);
+    }
+    
+    .close-mobile-menu {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--deep-space);
+      cursor: pointer;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      body {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        grid-template-areas: 
+          "header"
+          "main";
+      }
+      
+      .sidebar {
+        position: fixed;
+        left: -100%;
+        width: var(--sidebar-width);
+        height: 100vh;
+        z-index: 99;
+        transition: left 0.3s ease;
+      }
+      
+      .sidebar.active {
+        left: 0;
+      }
+      
+      .toggle-sidebar {
+        display: block;
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--moonstone);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        cursor: pointer;
+        z-index: 98;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      }
+      
+      header {
+        justify-content: space-between;
+        padding: 15px 20px;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .nav-menu {
+        display: none;
+      }
+      
+      main {
+        padding: 20px;
+      }
+      
+      .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .page-section {
+        padding: 20px;
+      }
+      
+      .projects-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .scroll-to-top {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+        bottom: 15px;
+        right: 15px;
+      }
+      
+      .toggle-sidebar {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+        bottom: 15px;
+        left: 15px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .profile-img {
+        width: 120px;
+        height: 120px;
+        font-size: 40px;
+      }
+      
+      .profile-section h1 {
+        font-size: 1.5em;
+      }
+      
+      h2 {
+        font-size: 1.3em;
+      }
+      
+      .project-card {
+        padding: 15px;
+      }
+    }
   </style>
 </head>
 <body>
 
+<!-- Header/Navigation -->
 <header>
+  <a href="index.html" class="home-button">
+    <i class="fas fa-home"></i>
+  </a>
   <button class="mobile-menu-btn" id="mobileMenuBtn">
     <i class="fas fa-bars"></i>
   </button>
@@ -77,13 +533,29 @@
   </nav>
 </header>
 
-<aside class="sidebar">
+<!-- Mobile Navigation Overlay -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+<!-- Mobile Navigation Menu -->
+<div class="mobile-nav-menu" id="mobileNavMenu">
+  <button class="close-mobile-menu" id="closeMobileMenu">
+    <i class="fas fa-times"></i>
+  </button>
+  <a href="index.html">Home</a>
+  <a href="cv.html">CV</a>
+  <a href="#projects" class="active">Projects</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- Sidebar with Contact Info -->
+<aside class="sidebar" id="sidebar">
   <div class="profile-section">
     <div class="profile-img">
       <i class="fas fa-user"></i>
     </div>
     <h1>Zahra Goraya</h1>
     <p>Mathematics Student</p>
+    
     <div class="contact-info">
       <div class="contact-item">
         <i class="fas fa-envelope"></i>
@@ -102,17 +574,24 @@
         <span>London, UK</span>
       </div>
     </div>
+    
     <div class="contact-buttons">
       <a href="mailto:ZahraGoraya@outlook.com" class="contact-button">
         <i class="fas fa-envelope"></i> Email Me
       </a>
-      <a href="https://www.linkedin.com/in/zahra-goraya" class="contact-button">
+      <a href="https://www.linkedin.com/in/zahra-goraya" target="_blank" class="contact-button">
         <i class="fab fa-linkedin"></i> LinkedIn
       </a>
     </div>
   </div>
 </aside>
 
+<!-- Toggle Sidebar Button (Mobile Only) -->
+<div class="toggle-sidebar" id="toggleSidebar">
+  <i class="fas fa-user"></i>
+</div>
+
+<!-- Main Content -->
 <main>
   <section id="projects" class="page-section">
     <h2><i class="fas fa-folder"></i> Projects</h2>
@@ -122,28 +601,133 @@
         <p>A static view of stock portfolio analysis with pre-generated graphs and metrics.</p>
         <p>This project is a Python-based Stock Portfolio Tracker that analyses the historical performance of selected stocks and generates informative visualisations.</p>
 
-            <p>For this project, I focused on three prominent companies:</p>
-            <ul>
-              <li><strong>TSLA</strong> – Tesla, Inc., a leading electric vehicle and clean energy company.</li>
-              <li><strong>AAPL</strong> – Apple Inc., a global technology company known for its consumer electronics and software.</li>
-              <li><strong>MSFT</strong> – Microsoft Corporation, a multinational technology company specialising in software, cloud computing, and hardware.</li>
-            </ul>
-            
-            <p>The Python code retrieves stock data, calculates daily returns, and creates visualisations including historical prices, cumulative portfolio returns, and correlation heatmaps. These plots help investors understand performance trends and the relationships between different stocks.</p>
-            
-            <p>This project also demonstrates the ability to generate reports automatically, supporting data-driven insights for portfolio management and risk assessment.</p>
+        <p>For this project, I focused on three prominent companies:</p>
+        <ul>
+          <li><strong>TSLA</strong> – Tesla, Inc., a leading electric vehicle and clean energy company.</li>
+          <li><strong>AAPL</strong> – Apple Inc., a global technology company known for its consumer electronics and software.</li>
+          <li><strong>MSFT</strong> – Microsoft Corporation, a multinational technology company specialising in software, cloud computing, and hardware.</li>
+        </ul>
+        
+        <p>The Python code retrieves stock data, calculates daily returns, and creates visualisations including historical prices, cumulative portfolio returns, and correlation heatmaps. These plots help investors understand performance trends and the relationships between different stocks.</p>
+        
+        <p>This project also demonstrates the ability to generate reports automatically, supporting data-driven insights for portfolio management and risk assessment.</p>
 
         <div class="project-tags">
           <span class="project-tag">Python</span>
           <span class="project-tag">Matplotlib</span>
+          <span class="project-tag">Finance</span>
         </div>
-        <img src="images/historical_prices.png" alt="Historical Prices" style="width:100%; margin-bottom: 10px; border-radius: 5px;">
-        <img src="images/portfolio_cumulative.png" alt="Portfolio Cumulative" style="width:100%; margin-bottom: 10px; border-radius: 5px;">
-        <img src="images/correlation_heatmap.png" alt="Correlation Heatmap" style="width:100%; border-radius: 5px;">
+        
+        <img src="images/historical_prices.png" alt="Historical Prices" class="project-image">
+        <img src="images/portfolio_cumulative.png" alt="Portfolio Cumulative" class="project-image">
+        <img src="images/correlation_heatmap.png" alt="Correlation Heatmap" class="project-image">
       </div>
     </div>
   </section>
 </main>
+
+<!-- Scroll to Top Button -->
+<div class="scroll-to-top" id="scrollToTop">
+  <i class="fas fa-arrow-up"></i>
+</div>
+
+<script>
+  // JavaScript for navigation active state
+  document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-menu a');
+    const sections = document.querySelectorAll('.page-section');
+    
+    window.addEventListener('scroll', function() {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= (sectionTop - 100)) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      // Update desktop navigation
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+          link.classList.add('active');
+        }
+      });
+      
+      // Update mobile navigation
+      mobileNavLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+          link.classList.add('active');
+        }
+      });
+      
+      // Show/hide scroll to top button
+      const scrollToTopBtn = document.getElementById('scrollToTop');
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+    
+    // Scroll to top functionality
+    document.getElementById('scrollToTop').addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // Mobile menu functionality
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+    const mobileNavMenu = document.getElementById('mobileNavMenu');
+    
+    function openMobileMenu() {
+      mobileNavOverlay.classList.add('active');
+      mobileNavMenu.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeMobileMenuFunc() {
+      mobileNavOverlay.classList.remove('active');
+      mobileNavMenu.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+    
+    mobileMenuBtn.addEventListener('click', openMobileMenu);
+    closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
+    mobileNavOverlay.addEventListener('click', closeMobileMenuFunc);
+    
+    // Mobile nav links - close menu when clicked
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', closeMobileMenuFunc);
+    });
+    
+    // Sidebar toggle for mobile
+    const toggleSidebar = document.getElementById('toggleSidebar');
+    const sidebar = document.getElementById('sidebar');
+    
+    toggleSidebar.addEventListener('click', function() {
+      sidebar.classList.toggle('active');
+    });
+    
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', function(event) {
+      if (sidebar.classList.contains('active') && 
+          !sidebar.contains(event.target) && 
+          !toggleSidebar.contains(event.target)) {
+        sidebar.classList.remove('active');
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
