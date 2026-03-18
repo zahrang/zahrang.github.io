@@ -4,47 +4,82 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zahra Goraya | Bond Pricing & Yield Analysis</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+
   <nav>
     <a href="index.html">Home</a>
     <a href="cv.html">CV</a>
     <a href="index.html#projects">Projects</a>
+    <a href="index.html#contact">Contact</a>
   </nav>
 
-  <h1>Zahra Goraya</h1>
-  <h2>Bond Pricing & Yield Analysis</h2>
+  <header class="hero">
+    <h1>Zahra Goraya</h1>
+    <p>Mathematics Student</p>
+    <p>ZahraGoraya@outlook.com</p>
+    <p><a href="https://www.linkedin.com/in/zahra-goraya" target="_blank">linkedin.com/in/zahra-goraya</a></p>
+    <p>Queen Mary University of London</p>
+    <p>London, UK</p>
 
-  <p>
-    This project applies financial mathematics to analyse how bond prices change in response to
-    yield and maturity. Using Python, I priced plain vanilla coupon bonds, compared low-coupon
-    and high-coupon bonds, and visualised the inverse relationship between bond prices and yields.
-  </p>
+    <div class="hero-buttons">
+      <a href="mailto:ZahraGoraya@outlook.com" class="button">
+        <i class="fas fa-envelope"></i> Email Me
+      </a>
+      <a href="https://www.linkedin.com/in/zahra-goraya" target="_blank" class="button">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+    </div>
+  </header>
 
-  <p>
-    The project also includes duration calculations to illustrate interest rate sensitivity, helping
-    explain why longer-dated bonds and lower-coupon bonds are generally more sensitive to changes
-    in market yields.
-  </p>
+  <section class="section">
+    <h2><i class="fas fa-coins"></i> Projects</h2>
 
-  <h3>Key Features</h3>
-  <ul>
-    <li>Bond pricing using discounted cash flows</li>
-    <li>Comparison of low-coupon and high-coupon bonds</li>
-    <li>Bond price vs yield visualisation</li>
-    <li>Bond price vs maturity visualisation</li>
-    <li>Macaulay and modified duration calculations</li>
-  </ul>
+    <div class="project-detail">
+      <h3>Bond Pricing &amp; Yield Analysis</h3>
+      <p>A static view of bond pricing analysis with pre-generated graphs and metrics.</p>
 
-  <h3>Generated Visuals</h3>
-  <img src="images/bond_price_vs_yield.png" alt="Bond Price vs Yield" style="max-width: 800px; width: 100%;">
-  <img src="images/bond_price_vs_maturity.png" alt="Bond Price vs Maturity" style="max-width: 800px; width: 100%;">
+      <p>
+        This project is a Python-based Bond Pricing &amp; Yield Analysis tool that applies
+        discounted cash flow techniques to price fixed-income securities and explore how
+        bond values change as market yields move.
+      </p>
 
-  <h3>Key Insight</h3>
-  <p>
-    The results show the inverse relationship between bond prices and yields: as yields rise,
-    bond prices fall. They also show that lower-coupon bonds are more sensitive to yield changes
-    than higher-coupon bonds, which is consistent with duration-based interest rate risk.
-  </p>
+      <p>
+        For this project, I focused on comparing two example coupon bonds:
+      </p>
+      <ul>
+        <li><strong>Low Coupon Bond</strong> – a bond with a lower annual coupon rate, showing greater sensitivity to changes in yield.</li>
+        <li><strong>High Coupon Bond</strong> – a bond with a higher annual coupon rate, allowing comparison of pricing behaviour and interest-rate sensitivity.</li>
+      </ul>
+
+      <p>
+        The Python code calculates bond prices, Macaulay duration, and modified duration,
+        and generates visualisations including bond price vs yield and bond price vs maturity.
+        These outputs help illustrate the inverse relationship between bond prices and yields,
+        as well as the effect of coupon structure and maturity on interest-rate risk.
+      </p>
+
+      <p>
+        This project also demonstrates the ability to apply financial mathematics in a practical
+        setting, combining quantitative analysis with clear visual presentation to support
+        fixed-income valuation and risk assessment.
+      </p>
+
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">Finance</span>
+        <span class="project-tag">Fixed Income</span>
+      </div>
+
+      <div class="project-gallery">
+        <img src="images/bond_price_vs_yield.png" alt="Bond Price vs Yield">
+        <img src="images/bond_price_vs_maturity.png" alt="Bond Price vs Maturity">
+      </div>
+    </div>
+  </section>
+
 </body>
 </html>
