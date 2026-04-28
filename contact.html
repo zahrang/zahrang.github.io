@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Zahra Goraya</title>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+      --muted: #666666;
+      --line: #000000;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* HEADER */
+    header {
+      width: 100%;
+      border-bottom: 1px solid var(--line);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      opacity: 0.6;
+    }
+
+    /* MAIN */
+    .container {
+      max-width: 900px;
+      margin: 100px auto;
+      padding: 0 40px;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    /* CONTACT GRID */
+    .contact-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      border-top: 1px solid var(--line);
+      padding-top: 30px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 16px;
+    }
+
+    .left i {
+      font-size: 20px;
+    }
+
+    .contact-link {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      border: 1px solid var(--line);
+      padding: 8px 12px;
+      transition: 0.2s ease;
+    }
+
+    .contact-link:hover {
+      background: black;
+      color: white;
+    }
+
+    ::selection {
+      background: black;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <nav>
+    <a href="index.html">About</a>
+    <a href="GitHub_Projects.html">GitHub Projects</a>
+    <a href="CV.pdf" target="_blank">CV</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- MAIN -->
+<div class="container">
+
+  <h1>Contact</h1>
+
+  <p>
+    I would love to get in contact — be it sharing ideas or opportunities!
+    Please feel free to do so using any of the following:
+  </p>
+
+  <div class="contact-grid">
+
+    <!-- EMAIL -->
+    <div class="contact-item">
+      <div class="left">
+        <i class="fas fa-envelope"></i>
+        <span>Email</span>
+      </div>
+      <a class="contact-link" href="mailto:ZahraGoraya@outlook.com">
+        Send Email →
+      </a>
+    </div>
+
+    <!-- LINKEDIN -->
+    <div class="contact-item">
+      <div class="left">
+        <i class="fab fa-linkedin"></i>
+        <span>LinkedIn</span>
+      </div>
+      <a class="contact-link" href="https://www.linkedin.com/in/zahra-goraya" target="_blank">
+        View Profile →
+      </a>
+    </div>
+
+    <!-- GITHUB -->
+    <div class="contact-item">
+      <div class="left">
+        <i class="fab fa-github"></i>
+        <span>GitHub</span>
+      </div>
+      <a class="contact-link" href="https://github.com/zahrang" target="_blank">
+        Visit GitHub →
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
