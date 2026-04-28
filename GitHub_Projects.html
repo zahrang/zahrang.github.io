@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Projects | Zahra Goraya</title>
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+      --muted: #666666;
+      --line: #000000;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* HEADER */
+    header {
+      width: 100%;
+      border-bottom: 1px solid var(--line);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      opacity: 0.6;
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 1000px;
+      margin: 80px auto;
+      padding: 0 40px;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin-bottom: 60px;
+    }
+
+    /* PROJECT CARD */
+    .project {
+      border-top: 1px solid var(--line);
+      padding: 30px 0;
+    }
+
+    .project h2 {
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .project p {
+      margin-bottom: 12px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .tags {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      transition: 0.2s ease;
+    }
+
+    .button:hover {
+      background: black;
+      color: white;
+    }
+
+    ::selection {
+      background: black;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <nav>
+    <a href="index.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="GitHub_Projects.html">GitHub Projects</a>
+    <a href="ZahraGorayaCV.pdf" target="_blank">CV</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- MAIN -->
+<div class="container">
+
+  <h1>GitHub Projects</h1>
+  <p class="subtitle">
+    A collection of quantitative, computational, and analytical projects.
+  </p>
+
+  <!-- PROJECT 1 -->
+  <div class="project">
+
+    <h2>Tic-Tac-Toe Game Theory Analysis</h2>
+
+    <p class="muted">
+      A simulation-based game theory study analysing how optimal vs imperfect strategies affect outcomes in Tic-Tac-Toe.
+    </p>
+
+    <div class="tags">
+      Python • Game Theory • Simulation • Probability • Statistical Analysis
+    </div>
+
+    <p>
+      This project models thousands of Tic-Tac-Toe games under different player skill levels to understand how
+      deviations from optimal play affect win/draw/loss distributions.
+      It demonstrates that while perfect play guarantees a draw, introducing realistic human error shifts outcomes
+      significantly.
+    </p>
+
+    <p>
+      Key analysis includes:
+      perfect vs perfect play (theoretical draw equilibrium),
+      perfect vs imperfect strategy dominance,
+      imperfect vs imperfect balance effects,
+      and random baseline behaviour.
+    </p>
+
+    <a class="button" href="https://github.com/zahrang/tic-tac-toe" target="_blank">
+      View Project on GitHub →
+    </a>
+
+  </div>
+
+</div>
+
+</body>
+</html>

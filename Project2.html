@@ -3,706 +3,189 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zahra Goraya | Bond Pricing & Yield Analysis</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Bond Pricing & Yield Analysis | Zahra Goraya</title>
+
   <style>
     :root {
-      --deep-space: #406768;
-      --phthalo-green: #19350C;
-      --moonstone: #6FA9BB;
-      --mustard-green: #687D31;
-      --light-gray: #D5D3CC;
-      --white: #FFFFFF;
-      --dark-accent: #2C4A4A;
-      --sidebar-width: 300px;
+      --bg: #ffffff;
+      --text: #000000;
+      --muted: #666666;
+      --line: #000000;
     }
-    
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      background-color: var(--light-gray);
-      color: var(--deep-space);
-      display: grid;
-      grid-template-columns: var(--sidebar-width) 1fr;
-      grid-template-rows: 80px 1fr;
-      grid-template-areas: 
-        "sidebar header"
-        "sidebar main";
-      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
     }
 
-    /* Header/Navigation */
+    /* HEADER */
     header {
-      grid-area: header;
-      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      padding: 20px 40px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      opacity: 0.6;
+    }
+
+    /* MAIN */
+    .container {
+      max-width: 800px;
+      margin: 80px auto;
       padding: 0 40px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      z-index: 10;
-    }
-    
-    .home-button {
-      color: var(--deep-space);
-      text-decoration: none;
-      font-size: 1.5em;
-      padding: 10px;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-    }
-    
-    .home-button:hover {
-      background-color: var(--moonstone);
-      color: var(--white);
-    }
-    
-    .nav-menu {
-      display: flex;
-      gap: 10px;
-    }
-    
-    .nav-menu a {
-      color: var(--deep-space);
-      text-decoration: none;
-      font-weight: 600;
-      padding: 10px 20px;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-    }
-    
-    .nav-menu a:hover, .nav-menu a.active {
-      background-color: var(--moonstone);
-      color: var(--white);
     }
 
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 24px;
-      color: var(--deep-space);
-      cursor: pointer;
-      padding: 10px;
+    h1 {
+      font-size: 34px;
+      font-weight: 500;
+      margin-bottom: 10px;
     }
 
-    /* Sidebar */
-    .sidebar {
-      grid-area: sidebar;
-      background: linear-gradient(to bottom, var(--dark-accent), var(--deep-space));
-      padding: 40px 30px;
-      color: var(--light-gray);
-      display: flex;
-      flex-direction: column;
-      position: fixed;
-      width: var(--sidebar-width);
-      height: 100vh;
-      overflow-y: auto;
+    .subtitle {
+      color: var(--muted);
+      margin-bottom: 40px;
+      font-size: 15px;
     }
-    
-    .profile-section {
-      text-align: center;
+
+    section {
       margin-bottom: 40px;
     }
-    
-    .profile-img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--moonstone);
-      margin: 0 auto 20px;
-      background-color: var(--light-gray);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--deep-space);
-      font-size: 50px;
-    }
-    
-    .profile-section h1 {
-      color: var(--white);
-      font-size: 1.8em;
-      margin-bottom: 5px;
-    }
-    
-    .profile-section p {
-      color: var(--light-gray);
-      font-size: 1em;
-      margin-bottom: 30px;
-    }
-    
-    .contact-info {
-      margin-top: 20px;
-    }
-    
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-    
-    .contact-item i {
-      color: var(--moonstone);
-      font-size: 1.2em;
-      width: 25px;
-    }
-    
-    .contact-item a {
-      color: var(--light-gray);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    
-    .contact-item a:hover {
-      color: var(--moonstone);
-    }
-    
-    .contact-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-top: 30px;
-    }
-    
-    .contact-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 12px 20px;
-      background: var(--moonstone);
-      color: var(--white);
-      text-decoration: none;
-      border-radius: 5px;
-      transition: all 0.3s;
-      font-weight: 600;
-    }
-    
-    .contact-button:hover {
-      background: var(--mustard-green);
-      transform: translateY(-2px);
-    }
 
-    /* Main Content */
-    main {
-      grid-area: main;
-      padding: 40px;
-      overflow-y: auto;
-      background-color: var(--light-gray);
-    }
-    
-    .page-section {
-      background: var(--white);
-      border-radius: 10px;
-      padding: 30px;
-      margin-bottom: 30px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-    
     h2 {
-      color: var(--phthalo-green);
-      border-bottom: 2px solid var(--mustard-green);
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    h2 i {
-      color: var(--moonstone);
-    }
-
-    /* Project Cards */
-    .projects-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-    
-    .project-card {
-      background: linear-gradient(to bottom, var(--white), #f8f8f8);
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-      transition: all 0.3s ease;
-      border-left: 4px solid var(--moonstone);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .project-card h3 {
-      margin-top: 0;
-      color: var(--phthalo-green);
-      font-size: 1.2em;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    
-    .project-card h3 i {
-      color: var(--moonstone);
-    }
-    
-    .project-card p {
-      color: var(--deep-space);
-      font-size: 0.95em;
-      flex-grow: 1;
-      margin-bottom: 15px;
-    }
-    
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 10px 0;
-    }
-    
-    .project-tag {
-      background: var(--light-gray);
-      color: var(--deep-space);
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 0.75em;
+      font-size: 18px;
       font-weight: 500;
+      margin-bottom: 10px;
     }
-    
-    a.button {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 10px;
-      padding: 10px 18px;
-      background: var(--moonstone);
-      color: var(--white);
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9em;
-      transition: all 0.2s;
-    }
-    
-    a.button:hover {
-      background: var(--mustard-green);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    
-    .project-image {
-      width: 100%;
+
+    p {
       margin-bottom: 15px;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    .scroll-to-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: var(--moonstone);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      z-index: 1000;
-      opacity: 0;
-      visibility: hidden;
-    }
-    
-    .scroll-to-top.show {
-      opacity: 1;
-      visibility: visible;
-    }
-    
-    .scroll-to-top:hover {
-      background: var(--mustard-green);
-      transform: translateY(-5px);
+    ul {
+      margin-left: 20px;
+      margin-bottom: 15px;
     }
 
-    .mobile-nav-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
+    li {
+      margin-bottom: 8px;
+    }
+
+    img {
       width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      z-index: 100;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-    
-    .mobile-nav-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-    
-    .mobile-nav-menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 80%;
-      max-width: 300px;
-      height: 100%;
-      background: var(--white);
-      z-index: 101;
-      padding: 60px 20px 20px;
-      transition: right 0.3s ease;
-      overflow-y: auto;
-    }
-    
-    .mobile-nav-menu.active {
-      right: 0;
-    }
-    
-    .mobile-nav-menu a {
-      display: block;
-      padding: 15px;
-      color: var(--deep-space);
-      text-decoration: none;
-      font-weight: 600;
-      border-bottom: 1px solid var(--light-gray);
-    }
-    
-    .mobile-nav-menu a.active {
-      background-color: var(--moonstone);
-      color: var(--white);
-    }
-    
-    .close-mobile-menu {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: none;
-      border: none;
-      font-size: 24px;
-      color: var(--deep-space);
-      cursor: pointer;
+      margin: 25px 0;
+      border-radius: 4px;
     }
 
-    @media (max-width: 1024px) {
-      body {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
-        grid-template-areas: 
-          "header"
-          "main";
-      }
-      
-      .sidebar {
-        position: fixed;
-        left: -100%;
-        width: var(--sidebar-width);
-        height: 100vh;
-        z-index: 99;
-        transition: left 0.3s ease;
-      }
-      
-      .sidebar.active {
-        left: 0;
-      }
-      
-      .toggle-sidebar {
-        display: block;
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: var(--moonstone);
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 20px;
-        cursor: pointer;
-        z-index: 98;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      }
-      
-      header {
-        justify-content: space-between;
-        padding: 15px 20px;
-      }
-      
-      .mobile-menu-btn {
-        display: block;
-      }
-      
-      .nav-menu {
-        display: none;
-      }
-      
-      main {
-        padding: 20px;
-      }
-      
-      .scroll-to-top {
-        bottom: 20px;
-        right: 20px;
-      }
+    .caption {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: -15px;
+      margin-bottom: 25px;
     }
-    
-    @media (max-width: 768px) {
-      .page-section {
-        padding: 20px;
-      }
-      
-      .projects-container {
-        grid-template-columns: 1fr;
-      }
-      
-      .scroll-to-top {
-        width: 45px;
-        height: 45px;
-        font-size: 18px;
-        bottom: 15px;
-        right: 15px;
-      }
-      
-      .toggle-sidebar {
-        width: 45px;
-        height: 45px;
-        font-size: 18px;
-        bottom: 15px;
-        left: 15px;
-      }
+
+    a.link {
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+      color: var(--text);
     }
-    
-    @media (max-width: 480px) {
-      .profile-img {
-        width: 120px;
-        height: 120px;
-        font-size: 40px;
-      }
-      
-      .profile-section h1 {
-        font-size: 1.5em;
-      }
-      
-      h2 {
-        font-size: 1.3em;
-      }
-      
-      .project-card {
-        padding: 15px;
-      }
+
+    a.link:hover {
+      opacity: 0.6;
+    }
+
+    ::selection {
+      background: black;
+      color: white;
     }
   </style>
 </head>
+
 <body>
 
 <header>
-  <a href="index.html" class="home-button">
-    <i class="fas fa-home"></i>
-  </a>
-  <button class="mobile-menu-btn" id="mobileMenuBtn">
-    <i class="fas fa-bars"></i>
-  </button>
-  <nav class="nav-menu">
-    <a href="index.html">Home</a>
-    <a href="cv.html">CV</a>
-    <a href="index.html#projects">Projects</a>
-    <a href="#contact">Contact</a>
+  <nav>
+    <a href="index.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="ZahraGorayaCV.pdf" target="_blank">CV</a>
+    <a href="contact.html">Contact</a>
   </nav>
 </header>
 
-<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+<div class="container">
 
-<div class="mobile-nav-menu" id="mobileNavMenu">
-  <button class="close-mobile-menu" id="closeMobileMenu">
-    <i class="fas fa-times"></i>
-  </button>
-  <a href="index.html">Home</a>
-  <a href="cv.html">CV</a>
-  <a href="index.html#projects">Projects</a>
-  <a href="#contact">Contact</a>
-</div>
+  <h1>Bond Pricing & Yield Analysis</h1>
+  <p class="subtitle">Python • Fixed Income • Quantitative Modelling</p>
 
-<aside class="sidebar" id="sidebar">
-  <div class="profile-section">
-    <div class="profile-img">
-      <i class="fas fa-user"></i>
-    </div>
-    <h1>Zahra Goraya</h1>
-    <p>Mathematics Student</p>
-    
-    <div class="contact-info">
-      <div class="contact-item">
-        <i class="fas fa-envelope"></i>
-        <a href="mailto:ZahraGoraya@outlook.com">ZahraGoraya@outlook.com</a>
-      </div>
-      <div class="contact-item">
-        <i class="fab fa-linkedin"></i>
-        <a href="https://www.linkedin.com/in/zahra-goraya" target="_blank">linkedin.com/in/zahra-goraya</a>
-      </div>
-      <div class="contact-item">
-        <i class="fas fa-graduation-cap"></i>
-        <span>Queen Mary University of London</span>
-      </div>
-      <div class="contact-item">
-        <i class="fas fa-map-marker-alt"></i>
-        <span>London, UK</span>
-      </div>
-    </div>
-    
-    <div class="contact-buttons">
-      <a href="mailto:ZahraGoraya@outlook.com" class="contact-button">
-        <i class="fas fa-envelope"></i> Email Me
-      </a>
-      <a href="https://www.linkedin.com/in/zahra-goraya" target="_blank" class="contact-button">
-        <i class="fab fa-linkedin"></i> LinkedIn
-      </a>
-    </div>
-  </div>
-</aside>
-
-<div class="toggle-sidebar" id="toggleSidebar">
-  <i class="fas fa-user"></i>
-</div>
-
-<main>
-  <section id="projects" class="page-section">
-    <h2><i class="fas fa-folder"></i> Projects</h2>
-    <div class="projects-container">
-      <div class="project-card">
-        <h3><i class="fas fa-coins"></i> Bond Pricing &amp; Yield Analysis</h3>
-        <p>A static view of bond pricing analysis with pre-generated graphs and metrics.</p>
-        <p>This project is a Python-based Bond Pricing &amp; Yield Analysis tool that applies discounted cash flow methods to price fixed-income securities and examine how bond values change as market yields move.</p>
-
-        <p>For this project, I focused on two example coupon bonds:</p>
-        <ul>
-          <li><strong>Low Coupon Bond</strong> – a bond with a lower annual coupon rate, showing greater sensitivity to changes in yield.</li>
-          <li><strong>High Coupon Bond</strong> – a bond with a higher annual coupon rate, allowing comparison of pricing behaviour and interest-rate sensitivity.</li>
-        </ul>
-        
-        <p>The Python code calculates bond prices, Macaulay duration, and modified duration, and generates visualisations including bond price vs yield and bond price vs maturity. These plots help show the inverse relationship between bond prices and yields, as well as the effect of coupon rate and maturity on interest-rate risk.</p>
-        
-        <div class="project-tags">
-          <span class="project-tag">Python</span>
-          <span class="project-tag">Matplotlib</span>
-          <span class="project-tag">Finance</span>
-          <span class="project-tag">Fixed Income</span>
-        </div>
-        
-        <img src="images/bond_price_vs_yield.png" alt="Bond Price vs Yield" class="project-image">
-        <img src="images/bond_price_vs_maturity.png" alt="Bond Price vs Maturity" class="project-image">
-      </div>
-    </div>
+  <!-- Overview -->
+  <section>
+    <h2>Overview</h2>
+    <p>
+      This project applies discounted cash flow techniques to price fixed-income securities
+      and analyse how bond values respond to changes in market yields.
+    </p>
   </section>
-</main>
 
-<div class="scroll-to-top" id="scrollToTop">
-  <i class="fas fa-arrow-up"></i>
+  <!-- Bonds -->
+  <section>
+    <h2>Model Setup</h2>
+    <p>The analysis compares two example bonds:</p>
+    <ul>
+      <li><strong>Low Coupon Bond</strong> — more sensitive to interest rate changes</li>
+      <li><strong>High Coupon Bond</strong> — lower sensitivity due to higher cash flows</li>
+    </ul>
+  </section>
+
+  <!-- Method -->
+  <section>
+    <h2>Method</h2>
+    <ul>
+      <li>Calculated bond prices using discounted cash flow models</li>
+      <li>Computed Macaulay and modified duration</li>
+      <li>Analysed sensitivity to yield changes</li>
+      <li>Visualised relationships between price, yield, and maturity</li>
+    </ul>
+  </section>
+
+  <!-- Visualisations -->
+  <section>
+    <h2>Visualisations</h2>
+
+    <img src="images/bond_price_vs_yield.png" alt="Bond Price vs Yield">
+    <p class="caption">Inverse relationship between bond prices and yields</p>
+
+    <img src="images/bond_price_vs_maturity.png" alt="Bond Price vs Maturity">
+    <p class="caption">Impact of maturity on bond pricing behaviour</p>
+
+  </section>
+
+  <!-- Insight -->
+  <section>
+    <h2>Key Insight</h2>
+    <p>
+      The results demonstrate the inverse relationship between bond prices and yields,
+      and show how duration captures sensitivity to interest rate movements.
+      Lower coupon bonds exhibit greater price volatility, highlighting their higher interest-rate risk.
+    </p>
+  </section>
+
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.nav-menu a');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-menu a');
-    const sections = document.querySelectorAll('.page-section');
-    
-    window.addEventListener('scroll', function() {
-      let current = '';
-      
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (pageYOffset >= (sectionTop - 100)) {
-          current = section.getAttribute('id');
-        }
-      });
-      
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').includes(current)) {
-          link.classList.add('active');
-        }
-      });
-      
-      mobileNavLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').includes(current)) {
-          link.classList.add('active');
-        }
-      });
-      
-      const scrollToTopBtn = document.getElementById('scrollToTop');
-      if (window.pageYOffset > 300) {
-        scrollToTopBtn.classList.add('show');
-      } else {
-        scrollToTopBtn.classList.remove('show');
-      }
-    });
-    
-    document.getElementById('scrollToTop').addEventListener('click', function() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-    
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const closeMobileMenu = document.getElementById('closeMobileMenu');
-    const mobileNavOverlay = document.getElementById('mobileNavOverlay');
-    const mobileNavMenu = document.getElementById('mobileNavMenu');
-    
-    function openMobileMenu() {
-      mobileNavOverlay.classList.add('active');
-      mobileNavMenu.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-    
-    function closeMobileMenuFunc() {
-      mobileNavOverlay.classList.remove('active');
-      mobileNavMenu.classList.remove('active');
-      document.body.style.overflow = 'auto';
-    }
-    
-    mobileMenuBtn.addEventListener('click', openMobileMenu);
-    closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
-    mobileNavOverlay.addEventListener('click', closeMobileMenuFunc);
-    
-    mobileNavLinks.forEach(link => {
-      link.addEventListener('click', closeMobileMenuFunc);
-    });
-    
-    const toggleSidebar = document.getElementById('toggleSidebar');
-    const sidebar = document.getElementById('sidebar');
-    
-    toggleSidebar.addEventListener('click', function() {
-      sidebar.classList.toggle('active');
-    });
-    
-    document.addEventListener('click', function(event) {
-      if (sidebar.classList.contains('active') && 
-          !sidebar.contains(event.target) && 
-          !toggleSidebar.contains(event.target)) {
-        sidebar.classList.remove('active');
-      }
-    });
-  });
-</script>
 
 </body>
 </html>

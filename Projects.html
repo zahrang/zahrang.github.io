@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Zahra Goraya</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+      --muted: #666666;
+      --line: #000000;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      opacity: 0.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 0 40px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 500;
+      margin-bottom: 40px;
+    }
+
+    .project {
+      margin-bottom: 35px;
+    }
+
+    .project a {
+      font-size: 20px;
+      text-decoration: none;
+      color: var(--text);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project a:hover {
+      opacity: 0.6;
+    }
+
+    .description {
+      color: var(--muted);
+      font-size: 15px;
+      margin-top: 8px;
+      max-width: 600px;
+    }
+
+    .tags {
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    ::selection {
+      background: black;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <a href="index.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="ZahraGorayaCV.pdf" target="_blank">CV</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <h1>Projects</h1>
+
+  <!-- Project 1 -->
+  <div class="project">
+    <a href="Project1.html">Stock Portfolio Tracker</a>
+    <p class="description">
+      Python-based tool for analysing stock performance, computing returns, and visualising portfolio metrics.
+    </p>
+    <p class="tags">Python • Finance</p>
+  </div>
+
+  <!-- Project 2 -->
+  <div class="project">
+    <a href="Project2.html">Bond Pricing & Yield Analysis</a>
+    <p class="description">
+      Model for pricing fixed-income securities and analysing the relationship between bond prices, yields, and maturity.
+    </p>
+    <p class="tags">Python • Fixed Income</p>
+  </div>
+
+</div>
+
+</body>
+</html>
