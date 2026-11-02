@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dissertation | Zahra Goraya</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+      --muted: #666666;
+      --line: #000000;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* HEADER */
+    header {
+      border-bottom: 1px solid var(--line);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      opacity: 0.6;
+    }
+
+    /* MAIN */
+    .container {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 0 40px;
+    }
+
+    h1 {
+      font-size: 34px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin-bottom: 40px;
+      font-size: 15px;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    .question {
+      border-left: 1px solid var(--line);
+      padding-left: 20px;
+      font-style: italic;
+    }
+
+    ::selection {
+      background: black;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <a href="index.html">About</a>
+    <a href="Projects.html">Projects</a>
+    <a href="GitHub_Projects.html">GitHub Projects</a>
+    <a href="dissertation.html">Dissertation</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <h1>Dissertation</h1>
+  <p class="subtitle">Credit Risk • Machine Learning</p>
+
+  <!-- Introduction -->
+  <section>
+    <p>
+      This page outlines my dissertation, which I will be working on during my final year of university.
+      The project looks at loan default prediction, comparing a traditional statistical approach with a
+      machine learning one to understand which borrower characteristics matter most, and whether a simpler
+      model can be built without giving up predictive accuracy.
+    </p>
+  </section>
+
+  <!-- Research Question -->
+  <section>
+    <h2>Research Question</h2>
+    <p class="question">
+      What is a parsimonious (minimal, most important) set of predictors for loan default, and does a
+      nonlinear machine learning model (Random Forest) select different or fewer variables than penalised
+      logistic regression, without a meaningful loss in predictive performance?
+    </p>
+  </section>
+
+  <!-- Results -->
+  <section>
+    <h2>Results</h2>
+    <p>
+      Results and the final GitHub repository will be uploaded here when ready.
+    </p>
+  </section>
+
+</div>
+
+</body>
+</html>
