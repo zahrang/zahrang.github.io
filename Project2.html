@@ -3,118 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bond Pricing & Yield Analysis | Zahra Goraya</title>
+  <title>Bond Pricing &amp; Yield Analysis | Zahra Goraya</title>
 
-  <style>
-    :root {
-      --bg: #ffffff;
-      --text: #000000;
-      --muted: #666666;
-      --line: #000000;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-    }
-
-    /* HEADER */
-    header {
-      border-bottom: 1px solid var(--line);
-      padding: 20px 40px;
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    nav a {
-      margin-left: 25px;
-      text-decoration: none;
-      color: var(--text);
-      font-size: 15px;
-    }
-
-    nav a:hover {
-      opacity: 0.6;
-    }
-
-    /* MAIN */
-    .container {
-      max-width: 800px;
-      margin: 80px auto;
-      padding: 0 40px;
-    }
-
-    h1 {
-      font-size: 34px;
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      color: var(--muted);
-      margin-bottom: 40px;
-      font-size: 15px;
-    }
-
-    section {
-      margin-bottom: 40px;
-    }
-
-    h2 {
-      font-size: 18px;
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-
-    p {
-      margin-bottom: 15px;
-    }
-
-    ul {
-      margin-left: 20px;
-      margin-bottom: 15px;
-    }
-
-    li {
-      margin-bottom: 8px;
-    }
-
-    img {
-      width: 100%;
-      margin: 25px 0;
-      border-radius: 4px;
-    }
-
-    .caption {
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: -15px;
-      margin-bottom: 25px;
-    }
-
-    a.link {
-      text-decoration: none;
-      border-bottom: 1px solid var(--line);
-      color: var(--text);
-    }
-
-    a.link:hover {
-      opacity: 0.6;
-    }
-
-    ::selection {
-      background: black;
-      color: white;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
   <script data-goatcounter="https://zahrang.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 
@@ -123,8 +14,7 @@
 <header>
   <nav>
     <a href="index.html">About</a>
-    <a href="Projects.html">Projects</a>
-    <a href="GitHub_Projects.html">GitHub Projects</a>
+    <a href="Projects.html" class="active">Projects</a>
     <a href="dissertation.html">Dissertation</a>
     <a href="contact.html">Contact</a>
   </nav>
@@ -132,8 +22,12 @@
 
 <div class="container">
 
-  <h1>Bond Pricing & Yield Analysis</h1>
+  <h1>Bond Pricing &amp; Yield Analysis</h1>
   <p class="subtitle">Python • Fixed Income • Quantitative Modelling</p>
+
+  <div class="button-row">
+    <a class="button" href="https://github.com/zahrang/zahrang.github.io/blob/main/generate_bond_project.py" target="_blank" rel="noopener noreferrer">View code on GitHub →</a>
+  </div>
 
   <!-- Overview -->
   <section>
@@ -147,10 +41,10 @@
   <!-- Bonds -->
   <section>
     <h2>Model Setup</h2>
-    <p>The analysis compares two example bonds:</p>
+    <p>The analysis compares two 10-year bonds with face value 100 and annual coupons, priced at a 5% yield:</p>
     <ul>
-      <li><strong>Low Coupon Bond</strong> — more sensitive to interest rate changes</li>
-      <li><strong>High Coupon Bond</strong> — lower sensitivity due to higher cash flows</li>
+      <li><strong>Low Coupon Bond (3%)</strong>: more sensitive to interest rate changes</li>
+      <li><strong>High Coupon Bond (6%)</strong>: less sensitive, because more of its value comes from earlier cash flows</li>
     </ul>
   </section>
 
@@ -159,8 +53,8 @@
     <h2>Method</h2>
     <ul>
       <li>Calculated bond prices using discounted cash flow models</li>
-      <li>Computed Macaulay and modified duration</li>
-      <li>Analysed sensitivity to yield changes</li>
+      <li>Computed Macaulay duration, modified duration and convexity</li>
+      <li>Compared duration-based price predictions against exact repricing for ±1% yield shifts</li>
       <li>Visualised relationships between price, yield, and maturity</li>
     </ul>
   </section>
@@ -169,21 +63,68 @@
   <section>
     <h2>Visualisations</h2>
 
-    <img src="images/bond_price_vs_yield.png" alt="Bond Price vs Yield">
-    <p class="caption">Inverse relationship between bond prices and yields</p>
+    <figure>
+      <img src="images/bond_price_vs_yield.png" alt="Line chart of price against yield from 1% to 10% for the 3% and 6% coupon bonds; both curves slope downward and are convex, with the 6% bond priced higher throughout.">
+      <figcaption>Inverse relationship between bond prices and yields</figcaption>
+    </figure>
 
-    <img src="images/bond_price_vs_maturity.png" alt="Bond Price vs Maturity">
-    <p class="caption">Impact of maturity on bond pricing behaviour</p>
+    <figure>
+      <img src="images/bond_price_vs_maturity.png" alt="Line chart of price against maturity from 1 to 20 years at a 5% yield: the 3% bond falls further below par and the 6% bond rises further above par as maturity increases.">
+      <figcaption>Impact of maturity on bond pricing behaviour</figcaption>
+    </figure>
 
+    <figure>
+      <img src="images/bond_duration_convexity.png" alt="Chart of the 3% bond's exact price for yields of 2% to 8%, with the straight duration approximation and the curved duration-plus-convexity approximation; the convexity curve almost overlaps the exact price while the duration line drifts below it away from 5%.">
+      <figcaption>Duration alone vs duration + convexity as approximations to the exact price (3% coupon bond)</figcaption>
+    </figure>
+  </section>
+
+  <!-- Results -->
+  <section>
+    <h2>Results</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>At 5% yield</th><th>Price</th><th>Macaulay duration</th><th>Modified duration</th><th>Convexity</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>3% coupon</td><td>84.56</td><td>8.66 yrs</td><td>8.25</td><td>82.2</td></tr>
+          <tr><td>6% coupon</td><td>107.72</td><td>7.89 yrs</td><td>7.52</td><td>72.2</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Price change</th><th>Exact</th><th>Duration only</th><th>Duration + convexity</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>3% coupon, yield +1%</td><td>−7.85%</td><td>−8.25%</td><td>−7.83%</td></tr>
+          <tr><td>3% coupon, yield −1%</td><td>+8.67%</td><td>+8.25%</td><td>+8.66%</td></tr>
+          <tr><td>6% coupon, yield +1%</td><td>−7.17%</td><td>−7.52%</td><td>−7.16%</td></tr>
+          <tr><td>6% coupon, yield −1%</td><td>+7.89%</td><td>+7.52%</td><td>+7.88%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="note">
+      Duration estimate: ΔP/P ≈ −D<sub>mod</sub>·Δy. With convexity: ΔP/P ≈ −D<sub>mod</sub>·Δy + ½·C·(Δy)².
+    </p>
   </section>
 
   <!-- Insight -->
   <section>
     <h2>Key Insight</h2>
     <p>
-      The results demonstrate the inverse relationship between bond prices and yields,
-      and show how duration captures sensitivity to interest rate movements.
-      Lower coupon bonds exhibit greater price volatility, highlighting their higher interest-rate risk.
+      A 1% rise in yield cuts the 3% bond's price by 7.85%, against 7.17% for the 6% bond. This matches its longer modified duration
+      (8.25 vs 7.52) and confirms that lower-coupon bonds carry more interest-rate risk.
+    </p>
+    <p>
+      Duration alone is a linear approximation, so it overstates price falls and understates price rises, by about 0.35–0.43 percentage
+      points for a 1% shift. Because the price–yield curve is convex, adding the convexity term cuts that error to under 0.02 percentage
+      points.
     </p>
   </section>
 

@@ -5,116 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stock Portfolio Tracker | Zahra Goraya</title>
 
-  <style>
-    :root {
-      --bg: #ffffff;
-      --text: #000000;
-      --muted: #666666;
-      --line: #000000;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-    }
-
-    /* HEADER */
-    header {
-      border-bottom: 1px solid var(--line);
-      padding: 20px 40px;
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    nav a {
-      margin-left: 25px;
-      text-decoration: none;
-      color: var(--text);
-      font-size: 15px;
-    }
-
-    nav a:hover {
-      opacity: 0.6;
-    }
-
-    /* MAIN */
-    .container {
-      max-width: 800px;
-      margin: 80px auto;
-      padding: 0 40px;
-    }
-
-    h1 {
-      font-size: 34px;
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      color: var(--muted);
-      margin-bottom: 40px;
-      font-size: 15px;
-    }
-
-    section {
-      margin-bottom: 40px;
-    }
-
-    h2 {
-      font-size: 18px;
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-
-    p {
-      margin-bottom: 15px;
-    }
-
-    ul {
-      margin-left: 20px;
-      margin-bottom: 15px;
-    }
-
-    li {
-      margin-bottom: 8px;
-    }
-
-    img {
-      width: 100%;
-      margin: 25px 0;
-      border-radius: 4px;
-    }
-
-    .caption {
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: -15px;
-      margin-bottom: 25px;
-    }
-
-    a.link {
-      text-decoration: none;
-      border-bottom: 1px solid var(--line);
-      color: var(--text);
-    }
-
-    a.link:hover {
-      opacity: 0.6;
-    }
-
-    ::selection {
-      background: black;
-      color: white;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
   <script data-goatcounter="https://zahrang.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 
@@ -123,8 +14,7 @@
 <header>
   <nav>
     <a href="index.html">About</a>
-    <a href="Projects.html">Projects</a>
-    <a href="GitHub_Projects.html">GitHub Projects</a>
+    <a href="Projects.html" class="active">Projects</a>
     <a href="dissertation.html">Dissertation</a>
     <a href="contact.html">Contact</a>
   </nav>
@@ -135,24 +25,29 @@
   <h1>Stock Portfolio Tracker</h1>
   <p class="subtitle">Python • Data Analysis • Visualisation</p>
 
+  <div class="button-row">
+    <a class="button" href="https://github.com/zahrang/zahrang.github.io/blob/main/generate_images.py" target="_blank" rel="noopener noreferrer">View code on GitHub →</a>
+  </div>
+
   <!-- Overview -->
   <section>
     <h2>Overview</h2>
     <p>
       This project is a Python-based portfolio analysis tool that evaluates stock performance,
-      computes returns, and generates visualisations to better understand portfolio behaviour.
+      computes risk and return metrics, and generates visualisations to better understand portfolio behaviour.
     </p>
   </section>
 
   <!-- Data -->
   <section>
     <h2>Data</h2>
-    <p>The analysis focuses on three companies:</p>
+    <p>The portfolio holds three companies, using daily adjusted closing prices from Yahoo Finance for calendar year 2023:</p>
     <ul>
-      <li><strong>TSLA</strong> — Tesla, Inc.</li>
-      <li><strong>AAPL</strong> — Apple Inc.</li>
-      <li><strong>MSFT</strong> — Microsoft Corporation</li>
+      <li><strong>AAPL</strong> (Apple Inc.): 40%</li>
+      <li><strong>TSLA</strong> (Tesla, Inc.): 30%</li>
+      <li><strong>MSFT</strong> (Microsoft Corporation): 30%</li>
     </ul>
+    <p>The S&amp;P 500 (via the SPY ETF) is used as a benchmark.</p>
   </section>
 
   <!-- Process -->
@@ -160,9 +55,10 @@
     <h2>Process</h2>
     <ul>
       <li>Collected historical stock price data</li>
-      <li>Calculated daily returns and cumulative returns</li>
-      <li>Analysed relationships between assets</li>
-      <li>Generated visual outputs to interpret performance</li>
+      <li>Calculated daily and cumulative returns for each stock and the weighted portfolio</li>
+      <li>Computed total return, annualised volatility, Sharpe ratio and maximum drawdown</li>
+      <li>Analysed correlations between assets and rolling 30-day volatility</li>
+      <li>Compared performance against the S&amp;P 500</li>
     </ul>
   </section>
 
@@ -170,23 +66,93 @@
   <section>
     <h2>Visualisations</h2>
 
-    <img src="images/historical_prices.png" alt="Historical Prices">
-    <p class="caption">Historical price movement of selected stocks</p>
+    <figure>
+      <img src="images/historical_prices.png" alt="Line chart of AAPL, TSLA and MSFT adjusted closing prices through 2023: all three rise, TSLA swings most while climbing from about $110 to $250, and MSFT ends highest at about $370.">
+      <figcaption>Historical price movement of selected stocks</figcaption>
+    </figure>
 
-    <img src="images/portfolio_cumulative.png" alt="Portfolio Returns">
-    <p class="caption">Cumulative portfolio performance over time</p>
+    <figure>
+      <img src="images/portfolio_cumulative.png" alt="Line chart of 2023 cumulative returns: TSLA ends near +100%, the portfolio near +71%, MSFT and AAPL near +50–60%, and the S&amp;P 500 near +26%.">
+      <figcaption>Cumulative returns of each stock, the portfolio and the S&amp;P 500</figcaption>
+    </figure>
 
-    <img src="images/correlation_heatmap.png" alt="Correlation Heatmap">
-    <p class="caption">Correlation between assets in the portfolio</p>
+    <figure>
+      <img src="images/rolling_volatility.png" alt="Line chart of rolling 30-day annualised volatility: TSLA mostly between 35% and 80%, the portfolio between about 15% and 35%, and the S&amp;P 500 lowest at around 8–17%.">
+      <figcaption>Rolling 30-day volatility (annualised)</figcaption>
+    </figure>
 
+    <figure>
+      <img src="images/correlation_heatmap.png" alt="Heatmap of daily-return correlations: AAPL–MSFT 0.54, AAPL–TSLA 0.47, TSLA–MSFT 0.31.">
+      <figcaption>Correlation of daily returns between the three stocks</figcaption>
+    </figure>
+  </section>
+
+  <!-- Results -->
+  <section>
+    <h2>Results (2023)</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>2023 total return</th>
+            <th>Ann. volatility</th>
+            <th>Sharpe ratio</th>
+            <th>Max drawdown</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight"><td>Portfolio</td><td>70.9%</td><td>25.5%</td><td>2.06</td><td>−16.9%</td></tr>
+          <tr><td>AAPL</td><td>49.0%</td><td>20.3%</td><td>1.84</td><td>−14.9%</td></tr>
+          <tr><td>TSLA</td><td>101.7%</td><td>54.1%</td><td>1.49</td><td>−32.7%</td></tr>
+          <tr><td>MSFT</td><td>58.2%</td><td>25.1%</td><td>1.78</td><td>−13.0%</td></tr>
+          <tr><td>S&amp;P 500 (SPY)</td><td>26.2%</td><td>13.1%</td><td>1.49</td><td>−10.0%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">
+      Sharpe ratio = annualised mean daily excess return ÷ annualised volatility, with a 5% risk-free rate.
+      It is not the same as (total return − risk-free rate) ÷ volatility.
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Correlation of daily returns</th><th>AAPL</th><th>TSLA</th><th>MSFT</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>AAPL</td><td>1.00</td><td>0.47</td><td>0.54</td></tr>
+          <tr><td>TSLA</td><td>0.47</td><td>1.00</td><td>0.31</td></tr>
+          <tr><td>MSFT</td><td>0.54</td><td>0.31</td><td>1.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="note">
+      Based on 250 daily returns (3 Jan – 29 Dec 2023). Total return is compounded over the year (last close of 2022 to last close
+      of 2023). Volatility is annualised using 252 trading days. The 5% risk-free rate is roughly the average 3-month US Treasury bill
+      yield in 2023. The portfolio applies fixed weights to daily returns,
+      i.e. it is rebalanced daily. Prices are dividend-adjusted.
+    </p>
   </section>
 
   <!-- Insight -->
   <section>
     <h2>Key Insight</h2>
     <p>
-      The results show how diversification impacts overall volatility and returns,
-      highlighting the importance of correlation when constructing a portfolio.
+      The portfolio achieved the best risk-adjusted return of anything analysed: a Sharpe ratio of 2.06, compared with
+      1.84 for AAPL, 1.78 for MSFT and 1.49 for both TSLA and the S&amp;P 500.
+    </p>
+    <p>
+      TSLA delivered the largest return (101.7%) but with 54.1% volatility and a 32.7% drawdown. Because its daily returns were only
+      weakly correlated with the other two stocks (0.47 with AAPL, 0.31 with MSFT), the portfolio's volatility was 25.5%, well below the
+      31.9% weighted average of the individual volatilities. That gap is the diversification benefit.
+    </p>
+    <p>
+      The portfolio's 70.9% return beat the S&amp;P 500's 26.2%, though with roughly twice the volatility (25.5% vs 13.1%) and a deeper
+      drawdown (−16.9% vs −10.0%), which is why the Sharpe ratio (2.06 vs 1.49) is a fairer comparison. The outperformance reflects a concentrated bet on large-cap tech during a strong year for the sector, so it should not be read as
+      evidence that the allocation would outperform in general.
     </p>
   </section>
 

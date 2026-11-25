@@ -18,89 +18,36 @@
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 
   <style>
-    :root {
-      --bg: #ffffff;
-      --text: #000000;
-      --muted: #666666;
-      --line: #000000;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-    }
-
-    /* HEADER */
-    header {
-      width: 100%;
-      border-bottom: 1px solid var(--line);
-      padding: 20px 40px;
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    nav a {
-      margin-left: 25px;
-      text-decoration: none;
-      color: var(--text);
-      font-size: 15px;
-    }
-
-    nav a:hover {
-      opacity: 0.6;
-    }
-
-    /* MAIN LAYOUT */
-    .container {
+    .container.home {
       max-width: 1100px;
-      margin: 80px auto;
-      padding: 0 40px;
+    }
 
+    .hero {
       display: grid;
       grid-template-columns: 1fr 0.8fr;
       gap: 60px;
       align-items: center;
     }
 
-    /* TEXT SIDE */
-    .text h1 {
+    .hero h1 {
       font-size: 42px;
-      font-weight: 500;
       margin-bottom: 20px;
     }
 
-    .text p {
+    .hero p {
       font-size: 18px;
       margin-bottom: 20px;
     }
 
-    .muted {
-      color: var(--muted);
-    }
-
-    .text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .text p:last-of-type {
+    .hero p:last-of-type {
       margin-bottom: 10px;
     }
 
-    /* SOCIAL ICONS */
     .socials {
       margin-top: 40px;
-
       display: flex;
       justify-content: center;
       align-items: center;
@@ -118,11 +65,6 @@
       transform: translateY(-3px);
     }
 
-    /* IMAGE SIDE */
-    .profile {
-      text-align: center;
-    }
-
     .profile img {
       width: 100%;
       max-width: 320px;
@@ -131,27 +73,41 @@
       margin: 0 auto;
     }
 
-    .location {
-      margin-top: 15px;
-      font-size: 14px;
-      color: var(--muted);
+    .selected-work {
+      margin-top: 80px;
+      border-top: 1px solid var(--line);
+      padding-top: 40px;
     }
 
-    /* RESPONSIVE */
+    .selected-work h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .selected-work .all-link {
+      display: inline-block;
+      margin-top: 20px;
+    }
+
     @media (max-width: 900px) {
-      .container {
+      .hero {
         grid-template-columns: 1fr;
-        text-align: left;
-      }
-
-      .profile {
-        margin-top: 40px;
+        gap: 40px;
       }
     }
 
-    ::selection {
-      background: black;
-      color: white;
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .selected-work {
+        margin-top: 50px;
+      }
     }
   </style>
   <script data-goatcounter="https://zahrang.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -159,56 +115,76 @@
 
 <body>
 
-<!-- HEADER NAV -->
 <header>
   <nav>
-    <a href="index.html">About</a>
+    <a href="index.html" class="active" aria-current="page">About</a>
     <a href="Projects.html">Projects</a>
-    <a href="GitHub_Projects.html">GitHub Projects</a>
     <a href="dissertation.html">Dissertation</a>
     <a href="contact.html">Contact</a>
   </nav>
 </header>
 
-<!-- MAIN CONTENT -->
-<div class="container">
+<div class="container home">
 
-  <!-- LEFT TEXT -->
-  <div class="text">
-    <h1>Zahra Goraya</h1>
-    <p class="muted">
-     Currently: Final year Mathematics student at Queen Mary University of London
-    </p>
+  <div class="hero">
+    <div class="text">
+      <h1>Zahra Goraya</h1>
+      <p class="muted">
+        Currently: Final year Mathematics student at Queen Mary University of London
+      </p>
 
-    <p>
-     I am a Mathematics student, who has recently completed a summer internship at The Alan Turing Institute, with a strong interest in
-     quantitative problem-solving, modelling, and data-driven approaches to complex systems.
-    </p>
+      <p>
+        I am a Mathematics student, who has recently completed a summer internship at The Alan Turing Institute, with a strong interest in
+        quantitative problem-solving, modelling, and data-driven approaches to complex systems.
+      </p>
 
-    <p class="muted">
-      Python • R • Excel • Financial Modelling • Statistical Analysis • Machine Learning
-    </p>
+      <p class="muted">
+        Python • R • Financial Modelling • Statistical Analysis • Machine Learning
+      </p>
 
-    <!-- SOCIAL ICONS -->
-  <div class="socials">
-    <a href="mailto:ZahraGoraya@outlook.com" aria-label="Email">
-      <i class="fas fa-envelope"></i>
-    </a>
+      <div class="socials">
+        <a href="mailto:ZahraGoraya@outlook.com" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/zahra-goraya" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/zahrang" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </div>
 
-    <a href="https://www.linkedin.com/in/zahra-goraya" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-      <i class="fab fa-linkedin"></i>
-    </a>
-
-    <a href="https://github.com/zahrang" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-      <i class="fab fa-github"></i>
-    </a>
+    <div class="profile">
+      <img src="profile.jpg" alt="Zahra Goraya">
+    </div>
   </div>
-</div>
 
-  <!-- RIGHT IMAGE -->
-  <div class="profile">
-    <img src="profile.jpg" alt="Zahra Goraya">
-  </div>
+  <section class="selected-work">
+    <h2>Selected work</h2>
+
+    <div class="card-grid">
+      <a class="card compact" href="Project2.html">
+        <h3>Bond Pricing &amp; Yield Analysis</h3>
+        <p>Pricing bonds and measuring interest-rate risk with duration and convexity.</p>
+        <span class="tags">Python • Fixed Income</span>
+      </a>
+
+      <a class="card compact" href="Project1.html">
+        <h3>Stock Portfolio Tracker</h3>
+        <p>Return, risk and diversification analysis of a three-stock portfolio against the S&amp;P 500.</p>
+        <span class="tags">Python • Finance</span>
+      </a>
+
+      <a class="card compact" href="https://github.com/zahrang/tic-tac-toe" target="_blank" rel="noopener noreferrer">
+        <h3>Tic-Tac-Toe Game Theory</h3>
+        <p>Simulating how imperfect strategies shift win, draw and loss outcomes.</p>
+        <span class="tags">Python • Game Theory • Simulation</span>
+      </a>
+    </div>
+
+    <a class="link all-link" href="Projects.html">All projects →</a>
+  </section>
 
 </div>
 

@@ -1,0 +1,9 @@
+# Editor / OS
+.DS_Store
+
+# R
+.Rhistory
+
+# Python / Jupyter
+__pycache__/
+.ipynb_checkpoints/
